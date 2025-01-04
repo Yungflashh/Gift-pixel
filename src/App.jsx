@@ -52,7 +52,7 @@ const AppContent = () => {
           <Route path="/promise/:id" element={<PromiseDetailPage />} /> 
 
           
-          <Route path="/promise-gift" element={<ReceiverView />} />
+          <Route path="/promise-gift/:promiseTitleId" element={<ReceiverView />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="*" element= {<NotFound/>} />
 
