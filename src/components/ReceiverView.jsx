@@ -67,13 +67,10 @@ const ReceiverView = () => {
     }, [promiseTitleId]);
 
     // Fetch email when the component mounts
-    useEffect(() => {
-        
-        fetchEmail();  // Fetch the email when the component mounts
-    }, []); 
 
     // Handle paying for a request
     const handlePayRequest = async (requestId) => {
+        fetchEmail()
         const token = Cookies.get('token'); 
         if (!token) {
             alert('You are not a registered user. Please sign up to make a payment.');
@@ -96,8 +93,8 @@ const ReceiverView = () => {
         try {
             console.log(requestId);
             
-            // Save requestId to cookies
-            Cookies.set('requestId', requestId, { expires: 7 });  // Optional: expires in 7 days
+          
+            Cookies.set('requestId', requestId, { expires: 7 });  
     
             const response = await axios.post(
                 'https://auth-zxvu.onrender.com/api/auth/paystack/payment',
