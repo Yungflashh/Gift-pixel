@@ -1,0 +1,107 @@
+.receiver-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.promise-details {
+    margin-bottom: 30px;
+}
+
+.requests-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.requests-list li {
+    margin-bottom: 20px;
+}
+
+.request-info {
+    font-weight: bold;
+}
+
+.payment-status {
+    margin-top: 10px;
+}
+
+.paid-status {
+    color: green;
+}
+
+.not-paid-status {
+    color: red;
+}
+
+.pay-button, .buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.pay-button,.buy-button:hover {
+    background-color: #45a049;
+}
+
+.payment-status-message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.no-requests-message {
+    font-style: italic;
+}
+
+
+.promise-details-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.promise-details-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.promise-details-container p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.requests-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.requests-list li {
+    margin-bottom: 10px;
+}
+
+.payment-status {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.paid-status {
+    color: green;
+}
+
+.not-paid-status {
+    color: red;
+}
+
+.pay-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.pay-button:hover {
+    background-color: #218838;
+}

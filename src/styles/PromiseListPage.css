@@ -1,0 +1,129 @@
+.promise-list-container{
+  background-color: #f2dfd8;
+  height: 100vh;
+}
+
+.promise-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.details-container{
+  display: flex;
+  justify-content: space-between ;
+}
+
+.btn-to-createPromise{
+  background: #FF5050;
+  width: 252px;
+height: Fixed (58px)px;
+border-radius: 50px;
+border: none;
+font-family: Inter;
+font-size: 16px;
+font-weight: 500;
+line-height: 20px;
+color: white;
+
+}
+.promise-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 70%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Important for positioning the icon container */
+  transition: transform 0.2s ease-in-out;
+}
+
+.promise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timestamp {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.promise-card h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #333;
+}
+
+.icon-container {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 30px;
+  position: absolute;
+  right: -40px; /* Initially position icons off-screen */
+  top: 50%;
+  transform: translateY(-50%);
+  transition: right 0.3s ease-in-out;
+}
+
+.promise-card:hover .icon-container {
+  right: -230px; /* Slide in when the card is hovered */
+}
+
+.icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.promise-card:hover .icon {
+  opacity: 1;
+}
+
+.icon.analytics {
+  color: #4caf50; /* Green for analytics */
+}
+
+.icon.edit {
+  color: #ff9800; /* Orange for edit */
+}
+
+.icon.share {
+  color: #2196f3; /* Blue for share */
+}
+
+.icon.delete {
+  color: #f44336; /* Red for delete */
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a semi-transparent background */
+  z-index: 9999;
+}
+
+@media (max-width: 600px) {
+  .promise-cards-container {
+    padding: 8px;
+  }
+
+  .promise-card {
+    padding: 15px;
+  }
+}

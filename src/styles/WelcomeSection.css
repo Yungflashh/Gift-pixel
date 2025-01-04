@@ -1,0 +1,61 @@
+.welcome-container{
+    /* border: 2px solid red; */
+    height: inherit;
+    width: 600px;
+   
+}
+.welcome-flower-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+ }
+.welcome-writeup{
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.welcome-writeup img{
+    margin-bottom: 80px;
+}
+
+.logo-gift{
+    width: 140px;
+}
+
+.flower{
+    width: 400px;
+    animation: bounce 3s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+      transform: translateY(0); /* Element starts at its original position */
+    }
+    50% {
+      transform: translateY(-30px); /* Element moves up */
+    }
+  }
+
+@media (max-width:900px){
+
+    .welcome-container{
+        width: 100%;
+    }
+
+    .welcome-flower-container{
+        width: 100%;
+        height: auto;
+    }
+    .welcome-writeup{
+        width: 100%;
+        margin: 0px;
+        /* border: 2px solid green; */
+        text-align: center;
+    }
+    .flower{
+        display: none;
+    }
+}

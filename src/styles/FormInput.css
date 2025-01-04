@@ -1,0 +1,40 @@
+.form-Div {
+    position: relative;
+    margin: 20px 0;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-wrapper input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    
+  }
+  
+  .input-label {
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: #888;
+    pointer-events: none; /* Prevent label from being clickable */
+    margin-top: 10px;
+  }
+  
+  .input-wrapper.active input {
+    padding-top: 24px; /* Ensure input doesn't overlap with label */
+  }
+  
+  .input-wrapper.active .input-label {
+    top: -30px;  /* Move the label up */
+    font-size: 12px; /* Reduce label size */
+    color: #000;
+  }
+  
