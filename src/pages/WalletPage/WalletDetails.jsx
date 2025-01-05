@@ -18,7 +18,7 @@ const WalletDetails = () => {
         }
 
         try {
-            const response = await axios.get('https://your-backend-url.com/api/auth/getWalletDetails', {
+            const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/getWalletDetails', {
                 headers: {
                     'Authorization': `Bearer ${token}`, // Pass token in Authorization header
                 },
