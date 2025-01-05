@@ -1,16 +1,13 @@
-import  { useEffect, useState } from 'react';
-
-import axios from "axios"
-import Cookies from "js-cookie"
-
-import "../../styles/WalletDetails.css"
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const WalletDetails = () => {
     const [walletData, setWalletData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Fetch wallet data
+    // Fetch wallet data using Axios
     const fetchWalletDetails = async () => {
         const token = Cookies.get('token'); // Get token from local storage
 
@@ -21,23 +18,19 @@ const WalletDetails = () => {
         }
 
         try {
-            const response = axios.get('https://auth-zxvu.onrender.com/api/auth/getWalletDetails', {
-                method: 'GET',
+            const response = await axios.get('https://your-backend-url.com/api/auth/getWalletDetails', {
                 headers: {
                     'Authorization': `Bearer ${token}`, // Pass token in Authorization header
                 },
             });
 
-            const data = await response.json();
-
-            if (data.success) {
-                setWalletData(data.wallet); // Set wallet data if response is successful
+            // Check for success and set wallet data
+            if (response.data.success) {
+                setWalletData(response.data.wallet); // Set wallet data from API response
             } else {
                 setError('Failed to fetch wallet details');
             }
         } catch (err) {
-            console.log(err);
-            
             setError('Error fetching wallet details');
         } finally {
             setLoading(false); // Stop loading after the request is done
