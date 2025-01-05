@@ -54,14 +54,14 @@ const SignInPage = () => {
 
     setLoading(true);
      
-      Cookies.set("myCookie", "sghwdeio")
+      // Cookies.set("myCookie", "sghwdeio")
 
        axios
       .post("https://auth-zxvu.onrender.com/api/auth/login", userData, { withCredentials: true }) // Token will be stored as an httpOnly cookie
       .then((response) => {
         setLoading(false);
         
-        console.log(response.data.user._id);
+        console.log(response.data);
         
         const token = response.data.token
 
@@ -83,7 +83,7 @@ const SignInPage = () => {
 
         
         if (token) {
-          console.log(token);
+          // console.log(token);
           
           axios.get("https://auth-zxvu.onrender.com/api/auth/user/promises", {
             withCredentials: true,
