@@ -64,7 +64,7 @@ const WalletDetails = () => {
                 <p><strong>Balance:</strong> {walletData.balance}</p>
             </div>
 
-            {/* Withdraw Button */}
+  
             <button onClick={handleWithdraw} className="withdraw-button">
                 Withdraw
             </button>

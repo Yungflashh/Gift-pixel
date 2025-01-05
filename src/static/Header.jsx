@@ -19,7 +19,7 @@ const Header = () => {
   const token = Cookies.get("token"); // Assuming token is stored in cookies
 
   // Fetch notifications
-  const fetchNotifications = async () => {
+  const fetchNotifications = async (token) => {
     if (!token) {
         setError("Authentication token is missing");
         return;
@@ -52,11 +52,13 @@ const Header = () => {
 
   // Handle notification icon click
   const handleNotificationClick = () => {
+    const token = Cookies.get("token")
     console.log("Notification icon clicked");
+   
 
-    if (userId) {
+    if (token) {
       setIsModalOpen(true); // Open the modal
-      fetchNotifications(); // Fetch notifications when modal opens
+      fetchNotifications(token); // Fetch notifications when modal opens
     } else {
       setError("User not authenticated");
     }
