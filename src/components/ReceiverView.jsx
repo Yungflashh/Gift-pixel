@@ -51,6 +51,9 @@ const ReceiverView = () => {
             try {
                 const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/get-promise-details/${promiseTitleId}`);
 
+
+                console.log(response);
+                
                 if (response.data.success) {
                     setReceiverView(response.data.promise);
                 } else {
