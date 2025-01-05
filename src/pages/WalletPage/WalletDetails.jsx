@@ -36,6 +36,8 @@ const WalletDetails = () => {
                 setError('Failed to fetch wallet details');
             }
         } catch (err) {
+            console.log(err);
+            
             setError('Error fetching wallet details');
         } finally {
             setLoading(false); // Stop loading after the request is done
