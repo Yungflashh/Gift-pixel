@@ -13,7 +13,7 @@ const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
   const [loading, setLoading] = useState(false); // For loading state
   const [error, setError] = useState(null); // To handle errors
-  const [userId, setUserId] = useState(null); // Store user ID once it's fetched
+
 
   // Get the token from cookies
   const token = Cookies.get("token"); // Assuming token is stored in cookies
@@ -52,10 +52,10 @@ const Header = () => {
 
   // Handle notification icon click
   const handleNotificationClick = () => {
-    const token = Cookies.get("token")
+   
     console.log(token);
     
-    console.log("Notification icon clicked");
+    console.log("Notification icon  has been clicked");
    
 
     if (token) {
