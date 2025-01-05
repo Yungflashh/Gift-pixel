@@ -53,6 +53,8 @@ const Header = () => {
   // Handle notification icon click
   const handleNotificationClick = () => {
     const token = Cookies.get("token")
+    console.log(token);
+    
     console.log("Notification icon clicked");
    
 
