@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import "../../styles/WalletDetails.css"
 
 const WalletDetails = () => {
     const [walletData, setWalletData] = useState(null);
