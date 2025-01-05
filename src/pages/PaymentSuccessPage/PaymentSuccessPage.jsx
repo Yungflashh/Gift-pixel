@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 const PaymentSuccessPage = () => {
     const requestId = Cookies.get('requestId');
     const token = Cookies.get('token'); 
+    const username = Cookies.get ('username');
     console.log(requestId);
 
     const location = useLocation();
@@ -33,7 +34,8 @@ const PaymentSuccessPage = () => {
                 {
                     reference: reference,
                     trxref: trxref,
-                    requestId
+                    requestId,
+                    username
                 },
                 {
                     headers: {
