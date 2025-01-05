@@ -15,6 +15,7 @@ import ReceiverView from "./components/ReceiverView"
 import Header from "./static/Header"
 import PaymentSuccess from "./pages/PaymentSuccessPage/PaymentSuccessPage"
 import NotFound from "./components/NotFound"
+import WalletDetails from "./pages/WalletPage/WalletDetails"
 
 
 const App = () => {
@@ -55,7 +56,7 @@ const AppContent = () => {
           <Route path="/promise-gift/:promiseTitleId" element={<ReceiverView />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="*" element= {<NotFound/>} />
-
+          <Route path="walletBalance" element = {<WalletDetails/>}/>
         </Routes>
      
     </>

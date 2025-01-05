@@ -77,7 +77,9 @@ const Header = () => {
         <Link to={"/promiseList"} className="anchor-link">
           <nav>Promise list</nav>
         </Link>
-        <nav>Wallet</nav>
+       
+       
+       <Link to={"/walletBalance"}>  <nav>Wallet</nav>  </Link> 
         <nav>Settings</nav>
       </div>
 
