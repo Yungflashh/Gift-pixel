@@ -79,7 +79,7 @@ const Header = () => {
         </Link>
        
        
-       <Link to={"/walletBalance"}>  <nav>Wallet</nav>  </Link> 
+       <Link to={"/walletBalance"} className="anchor-link">  <nav>Wallet</nav>  </Link> 
         <nav>Settings</nav>
       </div>
 
