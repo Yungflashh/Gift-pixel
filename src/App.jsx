@@ -31,7 +31,7 @@ const AppContent = () => {
   const location = useLocation();
 
   // Check the current route to conditionally render the header
-  const shouldShowHeader = ['/promiseList', '/createPromise'].includes(location.pathname);
+  const shouldShowHeader = ['/promiseList', '/createPromise', '/walletBalance'].includes(location.pathname);
 
 
   return (
