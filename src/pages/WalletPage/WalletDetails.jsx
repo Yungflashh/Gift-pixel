@@ -65,6 +65,7 @@ const WalletDetails = () => {
                         <th>Date</th>
                         <th>Description</th>
                         <th>Amount</th>
+                        <th>Transaction ID</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +74,7 @@ const WalletDetails = () => {
                             <td>{new Date(transaction.timestamp).toLocaleDateString()}</td>
                             <td>{transaction.description}</td>
                             <td>{transaction.amount}</td>
+                            <td>{transaction.Transaction_ID}</td>
                         </tr>
                     ))}
                 </tbody>
