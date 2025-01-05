@@ -51,12 +51,23 @@ const WalletDetails = () => {
         return <div>{error}</div>;
     }
 
+    // Function to handle the withdraw button click (placeholder)
+    const handleWithdraw = () => {
+        console.log("Withdraw button clicked!");
+        // You can implement your withdrawal functionality here
+    };
+
     return (
         <div className="wallet-container">
             <h1>Wallet Details</h1>
             <div className="wallet-details">
                 <p><strong>Balance:</strong> {walletData.balance}</p>
             </div>
+
+            {/* Withdraw Button */}
+            <button onClick={handleWithdraw} className="withdraw-button">
+                Withdraw
+            </button>
 
             <h2>Transaction History</h2>
             <table className="transactions-table">
