@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { FaMoneyBillWave, FaGift } from 'react-icons/fa'; // Import the money and gift icons
 import '../styles/ReceiverView.css';
 
 const ReceiverView = () => {
@@ -9,17 +10,13 @@ const ReceiverView = () => {
     const [ReceiverView, setReceiverView] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [email, setEmail] = useState(null); // State to store email
+    const [email, setEmail] = useState(null);
     const navigate = useNavigate();
-    // const location = useLocation();
 
     // Fetch user email from the backend
     const fetchEmail = async () => {
         try {
             const token = Cookies.get('token'); 
-            console.log(token);
-            
-
             if (!token) {
                 alert('You are not a registered user. Please sign up to make a payment.');
                 navigate('/signup');
@@ -27,17 +24,15 @@ const ReceiverView = () => {
             }
 
             const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/get-user-email', {
-                headers: {
-                    'Authorization': `Bearer ${token}`, 
-                },
-                withCredentials: true, 
+                headers: { 'Authorization': `Bearer ${token}` },
+                withCredentials: true,
             });
 
             if (response.data.success) {
-                setEmail(response.data.email); // Set the email in state
+                setEmail(response.data.email);
             } else {
                 alert('Unable to fetch user email. Please log in again.');
-                navigate('/login'); // Redirect to login if email is not found
+                navigate('/login');
             }
         } catch (error) {
             console.error(error);
@@ -50,11 +45,9 @@ const ReceiverView = () => {
         const fetchReceiverView = async () => {
             try {
                 const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/get-promise-details/${promiseTitleId}`);
-
-                const username = response.data.username ;
-                
+                const username = response.data.username;
                 Cookies.set("username", username);
-                
+
                 if (response.data.success) {
                     setReceiverView(response.data.promise);
                 } else {
@@ -70,52 +63,40 @@ const ReceiverView = () => {
         fetchReceiverView();
     }, [promiseTitleId]);
 
-    // Fetch email when the component mounts
-
     // Handle paying for a request
     const handlePayRequest = async (requestId) => {
-        fetchEmail()
+        fetchEmail();
         const token = Cookies.get('token'); 
         if (!token) {
             alert('You are not a registered user. Please sign up to make a payment.');
             navigate('/signup');
             return;
         }
-    
+
         const amount = ReceiverView.requests.find((req) => req._id === requestId)?.requestValue;
-    
         if (!amount) {
             setError('Amount is missing');
             return;
         }
-    
+
         if (!email) {
             alert('Unable to fetch your email. Please try again.');
             return;
         }
-    
+
         try {
-            console.log(requestId);
-            
-          
-            Cookies.set('requestId', requestId, { expires: 7 });  
-    
+            Cookies.set('requestId', requestId, { expires: 7 });
             const response = await axios.post(
                 'https://auth-zxvu.onrender.com/api/auth/paystack/payment',
                 { orderId: requestId, amount, email },
-                {
-                    headers: { Authorization: `Bearer ${token}` },
-                    withCredentials: true,
-                }
+                { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
             );
-    
+
             if (response.data.success) {
-                // After initializing the payment, redirect to Paystack's payment page
-                const authorizationUrl = response.data.authorization_url; // URL to redirect to Paystack
-    
+                const authorizationUrl = response.data.authorization_url;
                 if (authorizationUrl) {
-                    navigate('/payment-success', { state: { requestId } });  // Pass requestId via state
-                    window.location.href = authorizationUrl;  // Redirect user to Paystack
+                    navigate('/payment-success', { state: { requestId } });
+                    window.location.href = authorizationUrl;
                 } else {
                     setError('Failed to get Paystack authorization URL');
                 }
@@ -126,10 +107,10 @@ const ReceiverView = () => {
             setError('Error processing payment');
         }
     };
-    
+
     // Handle redirecting to the gift URL
     const handleBuyNowRedirect = (requestValue) => {
-        window.location.href = requestValue; // Redirect to the gift URL (if applicable)
+        window.location.href = requestValue;
     };
 
     if (loading) {
@@ -149,7 +130,6 @@ const ReceiverView = () => {
             {ReceiverView.requests.length > 0 ? (
                 <ul>
                     {ReceiverView.requests.map((request, index) => (
-                        
                         <li key={index}>
                             <strong>{request.requestType}: </strong> <span className='request-value'>{request.requestValue}</span>
                             <div className="payment-status">
@@ -157,6 +137,15 @@ const ReceiverView = () => {
                                     <span className="paid-status">Paid</span>
                                 ) : (
                                     <span className="not-paid-status">Not Paid</span>
+                                )}
+                            </div>
+
+                            {/* Display money icon for "money" requestType, and gift icon otherwise */}
+                            <div className="icon">
+                                {request.requestType === 'money' ? (
+                                    <FaMoneyBillWave size={20} color="green" />
+                                ) : (
+                                    <FaGift size={20} color="purple" />
                                 )}
                             </div>
 
@@ -186,7 +175,6 @@ const ReceiverView = () => {
             )}
         </div>
     );
-    
 };
 
 export default ReceiverView;
