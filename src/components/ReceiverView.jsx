@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import '../styles/ReceiverView.css';
 
@@ -151,7 +151,7 @@ const ReceiverView = () => {
                     {ReceiverView.requests.map((request, index) => (
                         
                         <li key={index}>
-                            <strong>{request.requestType}: </strong>{request.requestValue}
+                            <strong>{request.requestType}: </strong> <span className='request-value'>{request.requestValue}</span>
                             <div className="payment-status">
                                 {request.paid === true ? (
                                     <span className="paid-status">Paid</span>

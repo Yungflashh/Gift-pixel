@@ -16,6 +16,10 @@
     margin-bottom: 20px;
 }
 
+
+.request-value{
+    width: 200px;
+}
 .request-info {
     font-weight: bold;
 }
