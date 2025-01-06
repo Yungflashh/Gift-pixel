@@ -68,7 +68,7 @@ const ReceiverView = () => {
         // Function to track the access using Axios
         const trackShareLink = async (promiseTitleId, shareToken) => {
             try {
-                const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/share/track/${promiseTitleId}`, {
+                const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}`, {
                     params: { shareToken: shareToken }
                 });
     
