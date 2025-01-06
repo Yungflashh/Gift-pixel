@@ -10,8 +10,10 @@ const ReceiverView = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [email, setEmail] = useState(null);
+    const [shareToken, setShareToken] = useState(null); // New state to hold the share token
     const navigate = useNavigate();
 
+    // Fetch user email for payment process
     const fetchEmail = async () => {
         try {
             const token = Cookies.get('token');
@@ -40,52 +42,7 @@ const ReceiverView = () => {
         }
     };
 
-
-    const SharePage = ({ match }) => {
-        const [shareToken, setShareToken] = useState(null);
-        const [promiseTitleId, setPromiseTitleId] = useState(null);
-    
-        useEffect(() => {
-            // Get the promiseTitleId and shareToken from the URL
-            const queryParams = new URLSearchParams(window.location.search);
-            const token = queryParams.get('shareToken');
-            const titleId = match.params.promiseTitleId; // Extract promiseTitleId from route params
-    
-            if (token) {
-                setShareToken(token);
-            }
-    
-            if (titleId) {
-                setPromiseTitleId(titleId);
-            }
-    
-            // Track the share access using Axios when the page loads
-            if (titleId && token) {
-                trackShareLink(titleId, token);  // Call the function to track access
-            }
-        }, [match.params.promiseTitleId]);
-    
-        // Function to track the access using Axios
-        const trackShareLink = async (promiseTitleId, shareToken) => {
-            try {
-                const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}`, {
-                    params: { shareToken: shareToken }
-                });
-    
-                if (response.data.success) {
-                    console.log('Link access tracked successfully');
-                } else {
-                    console.log('Failed to track link access');
-                }
-            } catch (error) {
-                console.error('Error tracking share link access:', error);
-            }
-        };
-
-    }
-
-
-
+    // Fetch promise details and track the link access using shareToken
     useEffect(() => {
         const fetchReceiverView = async () => {
             try {
@@ -95,6 +52,10 @@ const ReceiverView = () => {
 
                 if (response.data.success) {
                     setReceiverView(response.data.promise);
+                    // Save the shareToken from the response if available
+                    if (response.data.promise.shareToken) {
+                        setShareToken(response.data.promise.shareToken);
+                    }
                 } else {
                     setError('Promise not found');
                 }
@@ -105,11 +66,32 @@ const ReceiverView = () => {
             }
         };
 
+        // Track the access when the promise details are fetched
+        const trackShareLink = async () => {
+            if (shareToken) {
+                Cookies.set("shareToken", shareToken)
+                try {
+                    // Send the share token to the server to track access
+                    const response = await axios.get('/api/share/track', {
+                        params: { shareToken }
+                    });
+                    if (response.data.success) {
+                        console.log('Link access tracked successfully');
+                    } else {
+                        console.log('Failed to track link access');
+                    }
+                } catch (error) {
+                    console.error('Error tracking share link access:', error);
+                }
+            }
+        };
+
+        // Fetch the promise data and track the access
         fetchReceiverView();
-    }, [promiseTitleId]);
+        trackShareLink(); // Track the link when the page is loaded
+    }, [promiseTitleId, shareToken]); // Adding `shareToken` dependency to ensure it's available when tracking
 
-
-
+    // Handle the payment request
     const handlePayRequest = async (requestId) => {
         fetchEmail();
         const token = Cookies.get('token');
@@ -159,10 +141,14 @@ const ReceiverView = () => {
         }
     };
 
+    // Handle "Buy Now" redirect for gift items
     const handleBuyNowRedirect = (requestValue) => {
         window.location.href = requestValue;
     };
 
+   
+
+   
     if (loading) {
         return <div className="loading-spinner">Loading...</div>;
     }
