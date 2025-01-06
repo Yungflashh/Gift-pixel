@@ -7,6 +7,7 @@
     color: #007bff;
 }
 
+
 /* Style for the error message */
 .error-message {
     text-align: center;
@@ -62,7 +63,10 @@
     border: none;
     margin: 20px;
 }
-
+.reqValue{
+    /* border: 2px solid red; */
+    width: 400px;
+}
 /* Style for the container */
 .requests-container {
     font-family: 'Arial', sans-serif;

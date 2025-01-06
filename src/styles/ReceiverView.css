@@ -1,111 +1,115 @@
-.receiver-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
+/* Wrapper for the entire Promise details */
+.promise-detail-wrapper {
+    margin: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
 }
 
-.promise-details {
-    margin-bottom: 30px;
-}
-
-.requests-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.requests-list li {
-    margin-bottom: 20px;
-}
-
-
-.request-value{
-    width: 200px;
-}
-.request-info {
-    font-weight: bold;
-}
-
-.payment-status {
-    margin-top: 10px;
-}
-
-.paid-status {
-    color: green;
-}
-
-.not-paid-status {
-    color: red;
-}
-
-.pay-button, .buy-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.pay-button,.buy-button:hover {
-    background-color: #45a049;
-}
-
-.payment-status-message {
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.no-requests-message {
-    font-style: italic;
-}
-
-
-.promise-details-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.promise-details-container h2 {
+/* Title of the Promise */
+.promise-title {
     font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.promise-details-container p {
-    font-size: 1rem;
-    margin-bottom: 30px;
-}
-
-.requests-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.requests-list li {
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.payment-status {
+/* Description of the Promise */
+.promise-description {
     font-size: 1rem;
-    margin-top: 5px;
+    color: #555;
+    margin-bottom: 20px;
 }
 
-.paid-status {
-    color: green;
+/* Heading for the Requests section */
+.request-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.not-paid-status {
-    color: red;
+/* List of all requests */
+.request-list {
+    list-style: none;
+    padding: 0;
 }
 
-.pay-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
+/* Each individual request item */
+.request-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Styling for request types like "gift-item" */
+.request-type {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling for request values */
+.request-value {
+    color: #007bff;
+}
+
+/* Container for payment status */
+.payment-status-container {
     margin-top: 10px;
 }
 
-.pay-button:hover {
-    background-color: #218838;
+/* Paid status text */
+.payment-status-paid {
+    color: green;
+    font-weight: bold;
+}
+
+/* Unpaid status text */
+.payment-status-unpaid {
+    color: red;
+    font-weight: bold;
+}
+
+/* "Buy Now" button */
+.buy-now-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* "Pay Now" button */
+.pay-now-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Loading state */
+.loading-spinner {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 50px;
+}
+
+/* Error message container */
+.error-message-box {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+}
+
+/* No requests available message */
+.no-requests-message {
+    font-size: 1.2rem;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
 }

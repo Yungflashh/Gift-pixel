@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { FaMoneyBillWave, FaGift } from 'react-icons/fa'; // Import the money and gift icons
 import '../styles/ReceiverView.css';
 
 const ReceiverView = () => {
@@ -13,10 +12,9 @@ const ReceiverView = () => {
     const [email, setEmail] = useState(null);
     const navigate = useNavigate();
 
-    // Fetch user email from the backend
     const fetchEmail = async () => {
         try {
-            const token = Cookies.get('token'); 
+            const token = Cookies.get('token');
             if (!token) {
                 alert('You are not a registered user. Please sign up to make a payment.');
                 navigate('/signup');
@@ -24,7 +22,9 @@ const ReceiverView = () => {
             }
 
             const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/get-user-email', {
-                headers: { 'Authorization': `Bearer ${token}` },
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
                 withCredentials: true,
             });
 
@@ -40,7 +40,6 @@ const ReceiverView = () => {
         }
     };
 
-    // Fetch promise details based on the ID in the URL
     useEffect(() => {
         const fetchReceiverView = async () => {
             try {
@@ -63,10 +62,9 @@ const ReceiverView = () => {
         fetchReceiverView();
     }, [promiseTitleId]);
 
-    // Handle paying for a request
     const handlePayRequest = async (requestId) => {
         fetchEmail();
-        const token = Cookies.get('token'); 
+        const token = Cookies.get('token');
         if (!token) {
             alert('You are not a registered user. Please sign up to make a payment.');
             navigate('/signup');
@@ -74,6 +72,7 @@ const ReceiverView = () => {
         }
 
         const amount = ReceiverView.requests.find((req) => req._id === requestId)?.requestValue;
+
         if (!amount) {
             setError('Amount is missing');
             return;
@@ -86,10 +85,14 @@ const ReceiverView = () => {
 
         try {
             Cookies.set('requestId', requestId, { expires: 7 });
+
             const response = await axios.post(
                 'https://auth-zxvu.onrender.com/api/auth/paystack/payment',
                 { orderId: requestId, amount, email },
-                { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                    withCredentials: true,
+                }
             );
 
             if (response.data.success) {
@@ -108,59 +111,49 @@ const ReceiverView = () => {
         }
     };
 
-    // Handle redirecting to the gift URL
     const handleBuyNowRedirect = (requestValue) => {
         window.location.href = requestValue;
     };
 
     if (loading) {
-        return <div className="loading">Loading...</div>;
+        return <div className="loading-spinner">Loading...</div>;
     }
 
     if (error) {
-        return <div className="error-message">{error}</div>;
+        return <div className="error-message-box">{error}</div>;
     }
 
     return (
-        <div className="promise-details-container">
-            <h2>{ReceiverView.title}</h2>
-            <p>{ReceiverView.description}</p>
+        <div className="promise-detail-wrapper">
+            <h2 className="promise-title">{ReceiverView.title}</h2>
+            <p className="promise-description">{ReceiverView.description}</p>
 
-            <h3>Requests:</h3>
+            <h3 className="request-header">Requests:</h3>
             {ReceiverView.requests.length > 0 ? (
-                <ul>
+                <ul className="request-list">
                     {ReceiverView.requests.map((request, index) => (
-                        <li key={index}>
-                            <strong>{request.requestType}: </strong> <span className='request-value'>{request.requestValue}</span>
-                            <div className="payment-status">
-                                {request.paid === true ? (
-                                    <span className="paid-status">Paid</span>
+                        <li key={index} className="request-item">
+                            <strong className="request-type">{request.requestType}:</strong>
+                            <span className="request-value">{request.requestValue}</span>
+                            <div className="payment-status-container">
+                                {request.paid ? (
+                                    <span className="payment-status-paid">Paid</span>
                                 ) : (
-                                    <span className="not-paid-status">Not Paid</span>
+                                    <span className="payment-status-unpaid">Not Paid</span>
                                 )}
                             </div>
 
-                            {/* Display money icon for "money" requestType, and gift icon otherwise */}
-                            <div className="icon">
-                                {request.requestType === 'money' ? (
-                                    <FaMoneyBillWave size={20} color="green" />
-                                ) : (
-                                    <FaGift size={20} color="purple" />
-                                )}
-                            </div>
-
-                            {/* Show "Buy Now" for gift requests, "Pay Now" for others */}
                             {!request.paid && (
                                 request.requestType === 'gift-item' ? (
                                     <button
-                                        className="buy-button"
+                                        className="buy-now-btn"
                                         onClick={() => handleBuyNowRedirect(request.requestValue)}
                                     >
                                         Buy Now
                                     </button>
                                 ) : (
                                     <button
-                                        className="pay-button"
+                                        className="pay-now-btn"
                                         onClick={() => handlePayRequest(request._id)}
                                     >
                                         Pay Now
@@ -171,7 +164,7 @@ const ReceiverView = () => {
                     ))}
                 </ul>
             ) : (
-                <p>No requests available for this promise.</p>
+                <p className="no-requests-message">No requests available for this promise.</p>
             )}
         </div>
     );

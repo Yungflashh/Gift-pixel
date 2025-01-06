@@ -12,6 +12,8 @@ import "../../styles/ListOfRequest.css"; // Import your CSS for styling
 import { PiShareThin } from "react-icons/pi";
 import { Rings } from "react-loader-spinner"; // Importing ClipLoader spinner
 import { FaTrash } from "react-icons/fa";  // Importing the delete trash icon
+import { FaDollarSign, FaGift } from 'react-icons/fa';
+
 
 // Modal for sharing the promise
 const Modal = ({ shareLink, onClose }) => {
@@ -156,7 +158,19 @@ const CreatorView = ({ promiseTitleId }) => {
                 <ul className="requests-list">
                     {requests.map((request, index) => (
                         <li key={index}>
-                            <strong>{request.requestType}:</strong> {request.requestValue}
+                            <strong>
+                                {request.requestType === 'money' ? (
+                                    <>
+                                        <FaDollarSign color="green"/> {request.requestType}:
+                                    </>
+                                ) : request.requestType === 'gift-item' ? (
+                                    <>
+                                        <FaGift color="#ff5050"/> {request.requestType}:
+                                    </>
+                                ) : (
+                                    <>{request.requestType}:</>
+                                )}
+                            </strong>  <span className="reqValue">{request.requestValue}</span> 
                             <div className="payment-status">
                                 {request.paid ? (
                                     <span className="paid-status">Paid</span>
@@ -179,7 +193,6 @@ const CreatorView = ({ promiseTitleId }) => {
         </div>
     );
 };
-
 const PromiseDetailPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
