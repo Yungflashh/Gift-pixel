@@ -1,33 +1,23 @@
-/* body {
-  background-color: #fdece4; 
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-} */
-
-
-.email-container{
+/* Container */
+.email-container {
   background-color: #fdece4; 
   height: 100vh;
   position: relative;
-
+  padding: 0 15px; /* Added padding for small screens */
 }
 
-
+/* Page layout */
 .EmailVerificationPage {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;  /* Use full width for smaller screens */
   max-width: 1200px;
+  margin: 0 auto; /* Center the content */
 }
 
 .welcome-section-otp {
-  width: 45%;
+  width: 100%;
   padding: 40px;
   text-align: left;
   margin-top: 30px;
@@ -46,16 +36,15 @@
 
 .form-container-otp {
   background-color: #fff;
-  width: 40%;
-  max-height: 450px; 
+  width: 100%;
+  max-width: 500px; /* Set a max width for better responsiveness */
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  margin-left: 100px;
+  margin-left: 0;
+  margin-top: 30px; /* Space between sections */
 }
-
-
 
 .Back {
   display: flex;
@@ -82,7 +71,6 @@
   justify-content: center;
   gap: 10px;
   margin: 20px 0;
-  
 }
 
 .inputStyle {
@@ -91,13 +79,12 @@
   border-radius: 8px;
   text-align: center;
   font-size: 1.2rem;
-  -moz-appearance: textfield; /* For Firefox */
-  -webkit-appearance: none; /* For Chrome, Safari, Edge */
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
 }
 
-/* Remove spinner buttons for number inputs */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -105,9 +92,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input[type="number"] {
-  -moz-appearance: textfield; /* For Firefox */
+  -moz-appearance: textfield;
 }
-
 
 .verifyBtn {
   width: 100%;
@@ -126,10 +112,6 @@ input[type="number"] {
   color: white;
 }
 
-/* .verifyBtn:hover {
-  background-color: #ddd;
-} */
-
 #Resend-OTP {
   text-align: center;
   color: #666;
@@ -141,9 +123,10 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.span{
+.span {
   margin-top: -20px;
 }
+
 .social-icon {
   display: flex;
   justify-content: center;
@@ -187,83 +170,35 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.success-message{
+.success-message {
   color: green;
 }
 
-.error-message{
+.error-message {
   color: red;
 }
 
+/* Mobile responsiveness */
 @media (max-width: 884px) {
-  body{
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+  .EmailVerificationPage {
+    flex-direction: column;
+    align-items: center; /* Stack the sections vertically */
   }
 
-  .welcome-section-otp{
-   
-    /* margin-buttom: 20rem; */
-  }
-
-  .form-container-otp{
-    margin-right: -2rem;
-  }
-
-  .EmailVerificationPage{
-    display: flex;
-    margin-bottom: 20rem;
-  }
-}
-  
-@media (max-width: 800px) {
-  .welcome-section-otp{
-    margin-left: 12rem;
-  }
-
-  .form-container-otp{
-    margin-right: 8rem;
-  }
-}
-
-@media (max-width: 1114px) {
-  .form-container-otp{
-    margin-left: 10rem;
-  }
-  .welcome-section-otp{
-    margin-top: 20px;
-    h1{
-      width: 100%;
-    }
-  }
-}
-  /* .welcome-section-otp {
-    text-align: center; 
-    padding: 10px;
+  .welcome-section-otp {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
   }
 
   .form-container-otp {
-    width: 100%;
-    padding: 15px;
-  }
-
-  .input {
-    gap: 5px;
-  }
-
-  .inputStyle {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-
-  .social-icon {
-    gap: 15px; 
+    width: 90%; /* Full width on smaller screens */
+    margin: 40px 0px;
   }
 
   .bottom-left-image-otp {
-    width: 200px;
+    width: 250px;
+    position: relative;
   }
 }
 
@@ -273,16 +208,29 @@ input[type="number"] {
   }
 
   .welcome-section-otp p {
-    font-size: 0.9rem; 
+    font-size: 1rem; 
   }
 
   .inputStyle {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+
+  .social-icon {
+    gap: 15px;
   }
 
   .bottom-left-image-otp {
     width: 150px;
-  } 
-} */
+  }
+
+  .verifyBtn {
+    font-size: 0.9rem;
+    height: 40px;
+  }
+
+  .acctSettings p {
+    font-size: 0.85rem;
+  }
+}

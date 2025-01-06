@@ -40,6 +40,52 @@ const ReceiverView = () => {
         }
     };
 
+
+    const SharePage = ({ match }) => {
+        const [shareToken, setShareToken] = useState(null);
+        const [promiseTitleId, setPromiseTitleId] = useState(null);
+    
+        useEffect(() => {
+            // Get the promiseTitleId and shareToken from the URL
+            const queryParams = new URLSearchParams(window.location.search);
+            const token = queryParams.get('shareToken');
+            const titleId = match.params.promiseTitleId; // Extract promiseTitleId from route params
+    
+            if (token) {
+                setShareToken(token);
+            }
+    
+            if (titleId) {
+                setPromiseTitleId(titleId);
+            }
+    
+            // Track the share access using Axios when the page loads
+            if (titleId && token) {
+                trackShareLink(titleId, token);  // Call the function to track access
+            }
+        }, [match.params.promiseTitleId]);
+    
+        // Function to track the access using Axios
+        const trackShareLink = async (promiseTitleId, shareToken) => {
+            try {
+                const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/share/track/${promiseTitleId}`, {
+                    params: { shareToken: shareToken }
+                });
+    
+                if (response.data.success) {
+                    console.log('Link access tracked successfully');
+                } else {
+                    console.log('Failed to track link access');
+                }
+            } catch (error) {
+                console.error('Error tracking share link access:', error);
+            }
+        };
+
+    }
+
+
+
     useEffect(() => {
         const fetchReceiverView = async () => {
             try {
@@ -61,6 +107,8 @@ const ReceiverView = () => {
 
         fetchReceiverView();
     }, [promiseTitleId]);
+
+
 
     const handlePayRequest = async (requestId) => {
         fetchEmail();

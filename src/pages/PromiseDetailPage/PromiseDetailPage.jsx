@@ -223,10 +223,12 @@ const PromiseDetailPage = () => {
         try {
             const response = await axios.post(
                 `https://auth-zxvu.onrender.com/api/auth/sharePromise/${promiseId}`,
-                {},
+                
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             if (response.data.shareLink) {
+                console.log(response.data);
+                
                 setShareLink(response.data.shareLink);
                 setShowModal(true);
             } else {
