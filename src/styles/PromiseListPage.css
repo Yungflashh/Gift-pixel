@@ -1,4 +1,4 @@
-.promise-list-container{
+.promise-list-container {
   background-color: #f2dfd8;
   height: 100vh;
 }
@@ -12,34 +12,37 @@
   box-sizing: border-box;
 }
 
-
-.details-container{
+.details-container {
   display: flex;
-  justify-content: space-between ;
+  justify-content: space-between;
+  align-items: center; /* Ensure vertical alignment of elements */
 }
 
-.btn-to-createPromise{
+.btn-to-createPromise {
   background: #FF5050;
   width: 252px;
-height: Fixed (58px)px;
-border-radius: 50px;
-border: none;
-font-family: Inter;
-font-size: 16px;
-font-weight: 500;
-line-height: 20px;
-color: white;
-
+  height: 58px; /* Fixed height */
+  border-radius: 50px;
+  border: none;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
 }
+
 .promise-card {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column; /* Stack elements vertically on smaller screens */
+  gap: 12px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  width: 70%;
+  width: 100%; /* Full width on small screens */
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative; /* Important for positioning the icon container */
@@ -65,7 +68,6 @@ color: white;
 
 .icon-container {
   display: flex;
-  /* flex-direction: column; */
   gap: 30px;
   position: absolute;
   right: -40px; /* Initially position icons off-screen */
@@ -118,12 +120,61 @@ color: white;
   z-index: 9999;
 }
 
+/* Mobile Responsiveness */
 @media (max-width: 600px) {
   .promise-cards-container {
     padding: 8px;
   }
 
   .promise-card {
+    width: 100%; /* Ensure cards take full width */
     padding: 15px;
+    gap: 10px;
+  }
+
+  .icon-container {
+    right: -60px; /* Position icons closer for mobile */
+  }
+
+  .icon {
+    font-size: 1.2rem; /* Smaller icons for mobile */
+  }
+
+  .details-container {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start;
+  }
+
+  .btn-to-createPromise {
+    width: 100%; /* Make button full width */
+    height: 50px;
+    font-size: 14px; /* Adjust font size for mobile */
+  }
+
+  .promise-card h3 {
+    font-size: 1rem; /* Smaller font size for titles */
+  }
+
+  .timestamp {
+    font-size: 0.8rem; /* Smaller timestamp for mobile */
+  }
+}
+
+@media (max-width: 400px) {
+  .btn-to-createPromise {
+    width: 100%; /* Ensure button takes full width on smaller screens */
+    height: 45px;
+  }
+
+  .promise-card {
+    padding: 12px;
+  }
+
+  .icon-container {
+    right: -40px; /* Adjust icon container position for very small screens */
+  }
+
+  .icon {
+    font-size: 1.1rem; /* Even smaller icons for very small screens */
   }
 }

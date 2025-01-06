@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "../../styles/PaymentSuccessPage.css";
 import Cookies from "js-cookie";
 
 const PaymentSuccessPage = () => {
     const requestId = Cookies.get('requestId');
-    const token = Cookies.get('token'); 
-    const username = Cookies.get ('username');
-    console.log(requestId);
-
+    const token = Cookies.get('token');
+    const username = Cookies.get('username');
     const location = useLocation();
+    const navigate = useNavigate(); // Added for navigation
+
     const [paymentStatus, setPaymentStatus] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [countdown, setCountdown] = useState(5); // Countdown state
 
     const queryParams = new URLSearchParams(location.search);
     const reference = queryParams.get('reference');
@@ -22,13 +23,23 @@ const PaymentSuccessPage = () => {
         if (reference && trxref) {
             verifyPayment(reference, trxref);
         }
-    }, [reference, trxref]);
+
+        // Countdown logic
+        const timer = setInterval(() => {
+            setCountdown((prev) => {
+                if (prev === 1) {
+                    clearInterval(timer);
+                    navigate("/signin"); // Redirect to sign-in after 5 seconds
+                }
+                return prev - 1;
+            });
+        }, 1000); // Update countdown every second
+
+        return () => clearInterval(timer); // Clean up interval on component unmount
+    }, [reference, trxref, navigate]);
 
     const verifyPayment = async (reference, trxref) => {
         try {
-            console.log(requestId);
-
-            // Add token to the headers
             const response = await axios.post(
                 'https://auth-zxvu.onrender.com/api/auth/payment/verify',
                 {
@@ -39,11 +50,10 @@ const PaymentSuccessPage = () => {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${token}` // Sending the token in the header
+                        Authorization: `Bearer ${token}`
                     }
                 }
             );
-            console.log(reference);
 
             if (response.data.success) {
                 setPaymentStatus('Payment successful! Your request has been processed.');
@@ -62,9 +72,12 @@ const PaymentSuccessPage = () => {
     }
 
     return (
-        <div>
-            <h1>Payment Status</h1>
-            <p>{paymentStatus}</p>
+        <div className="payment-success-container">
+            <div className="payment-status">
+                <h1>Payment Status</h1>
+                <p>{paymentStatus}</p>
+                <p>Redirecting in {countdown} seconds...</p>
+            </div>
         </div>
     );
 };

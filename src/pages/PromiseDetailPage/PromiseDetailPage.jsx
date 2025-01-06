@@ -11,7 +11,6 @@ import { FaCopy } from "react-icons/fa";
 import "../../styles/ListOfRequest.css"; // Import your CSS for styling
 import { PiShareThin } from "react-icons/pi";
 import { Rings } from "react-loader-spinner"; // Importing ClipLoader spinner
-import { FaTrash } from "react-icons/fa";  // Importing the delete trash icon
 import { FaDollarSign, FaGift } from 'react-icons/fa';
 
 
@@ -112,34 +111,6 @@ const CreatorView = ({ promiseTitleId }) => {
         fetchRequests();
     }, [promiseTitleId]);
 
-    const handleDeleteRequest = async (requestId) => {
-        console.log(requestId);
-        
-        try {
-            const token = Cookies.get('token');
-
-            if (!token) {
-                setError('User is not authenticated');
-                return;
-            }
-
-            await axios.delete(
-                'https://auth-zxvu.onrender.com/api/auth/delete-request',
-                {
-                    headers: { Authorization: `Bearer ${token}` },
-                    data: { requestId, promiseId: promiseTitleId }
-                }
-            );
-
-            setRequests((prevRequests) =>
-                prevRequests.filter((request) => request._id !== requestId)
-            );
-        } catch (err) {
-            setError('Failed to delete the request. Please try again.');
-            console.error('Error deleting request:', err);
-        }
-    };
-
     if (loading) {
         return (
             <div className="loading">
@@ -178,12 +149,6 @@ const CreatorView = ({ promiseTitleId }) => {
                                     <span className="not-paid-status">Not Paid</span>
                                 )}
                             </div>
-                            <button
-                                className="delete-btn"
-                                onClick={() => handleDeleteRequest(request._id)}
-                            >
-                                <FaTrash color="red" size={20} />
-                            </button>
                         </li>
                     ))}
                 </ul>
@@ -193,6 +158,7 @@ const CreatorView = ({ promiseTitleId }) => {
         </div>
     );
 };
+
 const PromiseDetailPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -200,7 +166,7 @@ const PromiseDetailPage = () => {
     const promiseId = promise?._id;
 
     if (!promise) {
-        navigate("/");
+        navigate("/"); 
         return null;
     }
 

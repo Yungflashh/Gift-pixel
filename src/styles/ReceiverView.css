@@ -11,6 +11,7 @@
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 /* Description of the Promise */
@@ -18,6 +19,7 @@
     font-size: 1rem;
     color: #555;
     margin-bottom: 20px;
+    word-wrap: break-word;
 }
 
 /* Heading for the Requests section */
@@ -77,6 +79,9 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
 }
 
 /* "Pay Now" button */
@@ -88,6 +93,9 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
 }
 
 /* Loading state */
@@ -112,4 +120,76 @@
     color: #888;
     text-align: center;
     margin-top: 20px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .promise-title {
+        font-size: 1.5rem;
+    }
+
+    .promise-description {
+        font-size: 0.9rem;
+    }
+
+    .request-header {
+        font-size: 1.1rem;
+    }
+
+    .request-type, .request-value {
+        font-size: 0.9rem;
+    }
+
+    .request-item {
+        margin-bottom: 10px;
+    }
+
+    .buy-now-btn, .pay-now-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .loading-spinner {
+        font-size: 1.2rem;
+    }
+
+    .no-requests-message {
+        font-size: 1rem;
+    }
+}
+
+/* Media Query for Very Small Screens (e.g., mobile phones in portrait mode) */
+@media (max-width: 480px) {
+    .promise-title {
+        font-size: 1.2rem;
+    }
+
+    .promise-description {
+        font-size: 0.85rem;
+    }
+
+    .request-header {
+        font-size: 1rem;
+    }
+
+    .request-type, .request-value {
+        font-size: 0.8rem;
+    }
+
+    .request-item {
+        margin-bottom: 8px;
+    }
+
+    .buy-now-btn, .pay-now-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .loading-spinner {
+        font-size: 1rem;
+    }
+
+    .no-requests-message {
+        font-size: 0.9rem;
+    }
 }
