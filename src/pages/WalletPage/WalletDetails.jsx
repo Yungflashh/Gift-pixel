@@ -24,7 +24,8 @@ const WalletDetails = () => {
                     'Authorization': `Bearer ${token}`, // Pass token in Authorization header
                 },
             });
-
+                console.log(response.data);
+                
             // Check for success and set wallet data
             if (response.data.success) {
                 setWalletData(response.data.wallet); // Set wallet data from API response

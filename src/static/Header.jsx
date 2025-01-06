@@ -2,73 +2,72 @@ import React, { useState, useEffect } from 'react';
 import GiftPixelLogo from "../assets/GiftPixel.svg";
 import { IoNotifications } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-import { FaGift, FaHandHolding } from "react-icons/fa"; // Imported icons for gift and giving
+import { FaGift, FaHandHolding } from "react-icons/fa"; 
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import Cookies from "js-cookie";
 
 const Header = () => {
-  const [notifications, setNotifications] = useState([]); // State to store notifications
-  const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
-  const [loading, setLoading] = useState(false); // For loading state
-  const [error, setError] = useState(null); // To handle errors
+  const [notifications, setNotifications] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for hamburger menu
 
+  const token = Cookies.get("token");
 
-  // Get the token from cookies
-  const token = Cookies.get("token"); // Assuming token is stored in cookies
-
-  // Fetch notifications
   const fetchNotifications = async (token) => {
     if (!token) {
-        setError("Authentication token is missing");
-        return;
+      setError("Authentication token is missing");
+      return;
     }
 
     setLoading(true);
-    setError(null); // Reset error state before fetching
+    setError(null);
     try {
-        const response = await axios.get(
-            `https://auth-zxvu.onrender.com/api/auth/notifications`, // The route stays the same
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`, // Use the token for authentication
-                },
-            }
-        );
+      const response = await axios.get(
+        `https://auth-zxvu.onrender.com/api/auth/notifications`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-        // Extract notifications from the response
-        const sortedNotifications = response.data.notifications.sort(
-            (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-        );
-        setNotifications(sortedNotifications);
+      const sortedNotifications = response.data.notifications.sort(
+        (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+      );
+      setNotifications(sortedNotifications);
     } catch (err) {
-        console.error("Error fetching notifications:", err);
-        setError("Failed to fetch notifications. Please try again.");
+      console.error("Error fetching notifications:", err);
+      setError("Failed to fetch notifications. Please try again.");
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-};
+  };
 
-  // Handle notification icon click
   const handleNotificationClick = () => {
-   
-    console.log(token);
-    
-    console.log("Notification icon  has been clicked ooooooo");
-   
-
     if (token) {
-      setIsModalOpen(true); // Open the modal
-      fetchNotifications(token); // Fetch notifications when modal opens
+      setIsModalOpen(true);
+      fetchNotifications(token);
     } else {
       setError("User not authenticated");
     }
   };
 
-  // Handle closing the modal
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
+    setIsModalOpen(false);
+  };
+
+  // Toggle hamburger menu visibility
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Close the menu when a link is clicked
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -77,25 +76,30 @@ const Header = () => {
         <img src={GiftPixelLogo} alt="Logo image" />
       </div>
 
-      <div className="links-container">
-        <Link to={"/promiseList"} className="anchor-link">
+      <div className={`links-container ${isMenuOpen ? 'active' : ''}`}>
+        <Link to={"/promiseList"} className="anchor-link" onClick={handleLinkClick}>
           <nav>Promise list</nav>
         </Link>
-       
-       
-       <Link to={"/walletBalance"} className="anchor-link">  <nav>Wallet</nav>  </Link> 
-        <nav>Settings</nav>
+
+        <Link to={"/walletBalance"} className="anchor-link" onClick={handleLinkClick}>
+          <nav>Wallet</nav>
+        </Link>
+
+        <nav onClick={handleLinkClick}>Settings</nav>
       </div>
 
       <div className="profile-container">
-        {/* Notification Icon */}
         <IoNotifications size={20} onClick={handleNotificationClick} />
-
-        {/* Profile Icon */}
         <CgProfile size={24} />
       </div>
 
-      {/* Notification Modal */}
+      {/* Hamburger Menu Icon */}
+      <div className="hamburger-icon" onClick={toggleMenu}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
+
       {isModalOpen && (
         <div className="notification-modal">
           <div className="modal-content">
@@ -112,12 +116,11 @@ const Header = () => {
                 {notifications.length > 0 ? (
                   notifications.map((notification, index) => (
                     <div key={index} className="notification-item">
-                      {/* Conditionally render icons based on notification type */}
                       <div className="notification-icon">
                         {notification.type === 'promise_created' ? (
-                          <FaGift size={24} color="green" /> // Icon for promise created (gift)
+                          <FaGift size={24} color="green" />
                         ) : notification.type === 'request_created' ? (
-                          <FaHandHolding size={24} color="blue" /> // Icon for request created (giving)
+                          <FaHandHolding size={24} color="blue" />
                         ) : null}
                       </div>
                       <div className="notification-text">

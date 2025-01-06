@@ -138,6 +138,7 @@ const SignInPage = () => {
               value={email}
               onChange={handleEmailChange}
               placeholder="Enter your email"
+              className="input-field"
             />
           </div>
 
@@ -153,18 +154,20 @@ const SignInPage = () => {
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Enter your password"
+                className="input-field"
               />
               <span className="password-icon" onClick={togglePasswordVisibility}>
                 {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
               </span>
             </div>
+            <Link to={"/forgotPassword"}  className="fgpwrd">
+            <p  className="fgpwrd-text">Forgot password?</p>
+          </Link>
           </div>
 
           {error && <p className="password-error">{error}</p>}
 
-          <Link to={"/forgotPassword"} className="fgpwrd">
-            <p>Forgot password?</p>
-          </Link>
+        
 
           <Button
             label={loading ? "Signing in..." : "Sign in"}

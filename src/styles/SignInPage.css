@@ -183,12 +183,24 @@ body {
     }
 
     .form-container {
-        width: 95%;
+        width: 85%;
         margin: 50px auto;
         padding: 0px 3px;
     }
 
     .form-container h2{
-        margin-left: 20px;
+       text-align: center;
+       margin: 20px;
+    }
+
+    .form-input{
+        /* border: 2px solid red;
+         */
+         width: 80%;
+         margin: auto;
+    }
+
+    .fgpwrd-text{
+        margin: 20px 0px;
     }
 }
