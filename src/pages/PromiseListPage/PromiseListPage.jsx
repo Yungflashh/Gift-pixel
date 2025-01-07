@@ -12,11 +12,14 @@ import { FaShareFromSquare } from "react-icons/fa6";
 import { FiTrash2 } from "react-icons/fi";
 
 const PromiseListPage = () => {
+
   const [promises, setPromises] = useState([]); // Store promises fetched from the backend
   const [loading, setLoading] = useState(true); // Manage loading state
   const [isSidePromiseOpen, setIsSidePromiseOpen] = useState(false); // State to control visibility of SidePromise
   const [user, setUser] = useState(null); // Store user data
   const navigate = useNavigate(); // React Router hook for navigation
+
+
 
   useEffect(() => {
     // Get token from cookies
@@ -79,6 +82,10 @@ const PromiseListPage = () => {
       });
   }, [navigate]); // Add navigate to the dependency array
 
+
+  const handleAnalytics = (promise) => {
+    Cookies.set ("promiseId", promise._id)
+  }
   // Handle promise click to navigate to PromiseDetailPage
   const handlePromiseClick = (promise) => {
     navigate(`/promise/${promise._id}`, { state: { promise } }); // Passing the promise data via state
@@ -133,7 +140,7 @@ const PromiseListPage = () => {
                 <h3>{promise.title}</h3>
 
                 <div className="icon-container">
-                  <IoAnalytics className="icon " size={30} color="black" title="Analytics" />
+                  <IoAnalytics className="icon " size={30} color="black" title="Analytics" onClick={handleAnalytics}/>
                   <FaEdit className="icon " size={30} color="black" title="Edit" />
                   <FaShareFromSquare className="icon" size={30} color="black" title="Share" />
                   <FiTrash2 className="icon" size={30} color="red" title="Delete" />
