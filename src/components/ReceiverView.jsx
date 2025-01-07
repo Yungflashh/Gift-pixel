@@ -72,7 +72,7 @@ const ReceiverView = () => {
                 Cookies.set("shareToken", shareToken)
                 try {
                     // Send the share token to the server to track access
-                    const response = await axios.get('/api/share/track', {
+                    const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/track', {
                         params: { shareToken }
                     });
                     if (response.data.success) {
