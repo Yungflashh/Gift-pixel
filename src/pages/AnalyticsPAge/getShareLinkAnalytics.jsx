@@ -1,9 +1,9 @@
 import axios from "axios"
-import Cookies from "js-cookie"
+// import Cookies from "js-cookie"
 
 const GetShareLinkAnalytics = async () => {
     
-    const promiseTitleId = Cookies.get("promiseId")
+    const promiseTitleId = "677cdda333c493617b66f2d4";
         try {
             const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/analytics/${promiseTitleId}`);
             if (response.data.success) {
