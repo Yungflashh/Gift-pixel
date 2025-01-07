@@ -78,6 +78,8 @@ const ReceiverView = () => {
         const trackShareLink = async () => {
             if (shareToken) {
                 try {
+                    console.log(shareToken, "linee");
+                    
                     Cookies.set("promiseId", promiseTitleId);
 
                     const response = await axios.post(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}/${shareToken}`);
