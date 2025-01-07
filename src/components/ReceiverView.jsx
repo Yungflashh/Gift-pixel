@@ -83,10 +83,15 @@ const ReceiverView = () => {
                     Cookies.set("promiseId", promiseTitleId);
 
                     const response = await axios.post(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}/${shareToken}`);
-        
+
+
+                    console.log(response.data);
+                    
                     if (response.data.success) {
                         console.log('Link access tracked successfully');
                     } else {
+                       
+                        
                         console.log('Failed to track link access');
                     }
                 } catch (error) {
