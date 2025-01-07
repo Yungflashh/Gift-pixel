@@ -55,8 +55,10 @@ const ReceiverView = () => {
                     console.log(response.data);
                     
                     trackShareLink()
-                    // Save the shareToken from the response if available
+                    
                     if (response.data.promise.shareToken) {
+                        console.log(response.data.shareToken);
+                        
                         setShareToken(response.data.promise.shareToken);
                     }
 
@@ -75,7 +77,7 @@ const ReceiverView = () => {
         const trackShareLink = async () => {
             
             if (shareToken) {
-                console.log(shareToken);
+                // console.log(shareToken);
                 
                 Cookies.set("shareToken", shareToken)
                 try {
