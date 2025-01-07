@@ -79,7 +79,7 @@ const ReceiverView = () => {
                 try {
                     // Send the share token to the server to track access
                     const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/track', {
-                        params: "43dd70cd-9600-46aa-8a92-e5c65449b403"
+                        params: { "43dd70cd-9600-46aa-8a92-e5c65449b403" }
                     });
                     if (response.data.success) {
                         console.log('Link access tracked successfully');
