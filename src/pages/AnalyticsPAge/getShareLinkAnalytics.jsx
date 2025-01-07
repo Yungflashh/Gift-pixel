@@ -2,11 +2,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Pie, Line, Bar, Radar, Doughnut } from "react-chartjs-2"; // Import necessary charts
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement, BarElement, Filler } from 'chart.js';
-import "../../styles/Analytics.css"
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement, BarElement, Filler, RadialLinearScale, Title } from 'chart.js'; // Import RadialLinearScale and Title
+import "../../styles/Analytics.css";
 
 // Register necessary components for Chart.js
-ChartJS.register(ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement, BarElement, Filler);
+ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Filler,
+  RadialLinearScale, // Register RadialLinearScale for Radar chart
+  Title // Register Title for the Radar chart (optional, but can help with custom titles)
+);
 
 const GetShareLinkAnalytics = () => {
   const [chartData, setChartData] = useState({});
