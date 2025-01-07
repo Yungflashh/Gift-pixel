@@ -57,7 +57,7 @@ const ReceiverView = () => {
                     trackShareLink()
                     
                     if (response.data.promise.shareToken) {
-                        console.log(response.data.shareToken);
+                        console.log(response.data.promise.shareToken);
                         
                         setShareToken(response.data.promise.shareToken);
                     }
