@@ -75,6 +75,8 @@ const ReceiverView = () => {
         const trackShareLink = async () => {
             
             if (shareToken) {
+                console.log(shareToken);
+                
                 Cookies.set("shareToken", shareToken)
                 try {
                     // Send the share token to the server to track access
