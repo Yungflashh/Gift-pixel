@@ -72,7 +72,8 @@ const ReceiverView = () => {
                 setLoading(false);
             }
         };
-
+            console.log(shareToken);
+            
         // Track the access when the promise details are fetched
         const trackShareLink = async () => {
             if (shareToken) {
@@ -80,7 +81,7 @@ const ReceiverView = () => {
                 try {
                     // Send the share token in the request body with a POST request
                     const response = await axios.post(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}`, {
-                        shareToken: shareToken // Send token in body
+                        shareToken: shareToken 
                     });
         
                     if (response.data.success) {
