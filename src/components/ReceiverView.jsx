@@ -10,7 +10,7 @@ const ReceiverView = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [email, setEmail] = useState(null);
-    const shareToken =  "e73ce4bc-4eb2-4ca5-a205-c6115a2d3c88"// New state to hold the share token
+    const [shareToken, setShareToken] = useState(null); // New state to hold the share token
     const navigate = useNavigate();
 
     // Fetch user email for payment process
