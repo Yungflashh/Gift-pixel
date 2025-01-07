@@ -68,16 +68,12 @@
 
 .icon-container {
   display: flex;
-  gap: 30px;
+  gap: 16px;
   position: absolute;
-  right: -40px; /* Initially position icons off-screen */
+  right: 10px; /* Adjust positioning */
   top: 50%;
   transform: translateY(-50%);
-  transition: right 0.3s ease-in-out;
-}
-
-.promise-card:hover .icon-container {
-  right: -230px; /* Slide in when the card is hovered */
+  z-index: 1; /* Ensure icons are above other elements */
 }
 
 .icon {
@@ -89,22 +85,6 @@
 
 .promise-card:hover .icon {
   opacity: 1;
-}
-
-.icon.analytics {
-  color: #4caf50; /* Green for analytics */
-}
-
-.icon.edit {
-  color: #ff9800; /* Orange for edit */
-}
-
-.icon.share {
-  color: #2196f3; /* Blue for share */
-}
-
-.icon.delete {
-  color: #f44336; /* Red for delete */
 }
 
 .loading-container {
@@ -120,61 +100,41 @@
   z-index: 9999;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 600px) {
   .promise-cards-container {
     padding: 8px;
   }
 
   .promise-card {
-    width: 100%; /* Ensure cards take full width */
+    width: 100%;
     padding: 15px;
     gap: 10px;
   }
 
   .icon-container {
-    right: -60px; /* Position icons closer for mobile */
+    right: -60px;
   }
 
   .icon {
-    font-size: 1.2rem; /* Smaller icons for mobile */
+    font-size: 1.2rem;
   }
 
   .details-container {
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
     align-items: flex-start;
   }
 
   .btn-to-createPromise {
-    width: 100%; /* Make button full width */
+    width: 100%;
     height: 50px;
-    font-size: 14px; /* Adjust font size for mobile */
+    font-size: 14px;
   }
 
   .promise-card h3 {
-    font-size: 1rem; /* Smaller font size for titles */
+    font-size: 1rem;
   }
 
   .timestamp {
-    font-size: 0.8rem; /* Smaller timestamp for mobile */
-  }
-}
-
-@media (max-width: 400px) {
-  .btn-to-createPromise {
-    width: 100%; /* Ensure button takes full width on smaller screens */
-    height: 45px;
-  }
-
-  .promise-card {
-    padding: 12px;
-  }
-
-  .icon-container {
-    right: -40px; /* Adjust icon container position for very small screens */
-  }
-
-  .icon {
-    font-size: 1.1rem; /* Even smaller icons for very small screens */
+    font-size: 0.8rem;
   }
 }

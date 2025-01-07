@@ -19,8 +19,6 @@ const PromiseListPage = () => {
   const [user, setUser] = useState(null); // Store user data
   const navigate = useNavigate(); // React Router hook for navigation
 
-
-
   useEffect(() => {
     // Get token from cookies
     const token = Cookies.get("token");
@@ -82,24 +80,37 @@ const PromiseListPage = () => {
       });
   }, [navigate]); // Add navigate to the dependency array
 
+  const handleAnalytics = (e, promise) => {
+    e.stopPropagation(); // Prevent event propagation to parent card
+    Cookies.set("promiseId", promise._id);
+    navigate("/analytics/:promiseTitleId");
+  };
 
-  const handleAnalytics = (promise) => {
-    Cookies.set ("promiseId", promise._id)
-    navigate("/analytics/:promiseTitleId")
-  }
-  // Handle promise click to navigate to PromiseDetailPage
   const handlePromiseClick = (promise) => {
     navigate(`/promise/${promise._id}`, { state: { promise } }); // Passing the promise data via state
   };
 
-  // Function to handle "Create a Promise" button click
   const handleCreatePromiseClick = () => {
     setIsSidePromiseOpen(true); // Open the SidePromise component when button is clicked
   };
 
-  // Function to close the SidePromise component
   const handleCloseSidePromise = () => {
     setIsSidePromiseOpen(false); // Close the SidePromise component
+  };
+
+  const handleEdit = (e) => {
+    e.stopPropagation();
+    // handle the edit logic here
+  };
+
+  const handleShare = (e) => {
+    e.stopPropagation();
+    // handle the share logic here
+  };
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    // handle the delete logic here
   };
 
   return (
@@ -140,11 +151,35 @@ const PromiseListPage = () => {
                 <p className="timestamp">{new Date(promise.timestamp).toLocaleString()}</p>
                 <h3>{promise.title}</h3>
 
-                <div className="icon-containera">
-                  <IoAnalytics className="icon" size={30} color="black" title="Analytics" onClick={handleAnalytics}/>
-                  <FaEdit className="icon" size={30} color="black" title="Edit" />
-                  <FaShareFromSquare className="icon" size={30} color="black" title="Share" />
-                  <FiTrash2 className="icon" size={30} color="red" title="Delete" />
+                <div className="icon-container">
+                  <IoAnalytics 
+                    className="icon" 
+                    size={30} 
+                    color="black" 
+                    title="Analytics" 
+                    onClick={(e) => handleAnalytics(e, promise)} // Pass the event and promise
+                  />
+                  <FaEdit 
+                    className="icon" 
+                    size={30} 
+                    color="black" 
+                    title="Edit" 
+                    onClick={handleEdit} 
+                  />
+                  <FaShareFromSquare 
+                    className="icon" 
+                    size={30} 
+                    color="black" 
+                    title="Share" 
+                    onClick={handleShare} 
+                  />
+                  <FiTrash2 
+                    className="icon" 
+                    size={30} 
+                    color="red" 
+                    title="Delete" 
+                    onClick={handleDelete} 
+                  />
                 </div>
               </div>
             ))
