@@ -141,7 +141,7 @@ const PromiseListPage = () => {
                 <h3>{promise.title}</h3>
 
                 <div className="icon-container">
-                  <IoAnalytics className="icon " size={30} color="black" title="Analytics" onClick={handleAnalytics}/>
+                  <IoAnalytics className="icon " size={30} color="black" title="Analytics" />
                   <FaEdit className="icon " size={30} color="black" title="Edit" />
                   <FaShareFromSquare className="icon" size={30} color="black" title="Share" />
                   <FiTrash2 className="icon" size={30} color="red" title="Delete" />
