@@ -73,12 +73,13 @@ const ReceiverView = () => {
 
         // Track the access when the promise details are fetched
         const trackShareLink = async () => {
+            
             if (shareToken) {
                 Cookies.set("shareToken", shareToken)
                 try {
                     // Send the share token to the server to track access
                     const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/track', {
-                        params: { shareToken }
+                        params: "43dd70cd-9600-46aa-8a92-e5c65449b403"
                     });
                     if (response.data.success) {
                         console.log('Link access tracked successfully');
