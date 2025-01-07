@@ -55,7 +55,7 @@ const AppContent = () => {
           <Route path="/promise/:id" element={<PromiseDetailPage />} /> 
 
           
-          <Route path="/promise-gift/:promiseTitleId" element={<ReceiverView />} />
+          <Route path="/promise-gift/:promiseTitleId:shareToken" element={<ReceiverView />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="*" element= {<NotFound/>} />
           <Route path="/walletBalance" element = {<WalletDetails/>}/>
