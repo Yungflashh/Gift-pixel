@@ -85,6 +85,7 @@ const PromiseListPage = () => {
 
   const handleAnalytics = (promise) => {
     Cookies.set ("promiseId", promise._id)
+    navigate("/analytics/:promiseTitleId")
   }
   // Handle promise click to navigate to PromiseDetailPage
   const handlePromiseClick = (promise) => {
