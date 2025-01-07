@@ -7,6 +7,8 @@ const GetShareLinkAnalytics = async () => {
         try {
             const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/analytics/${promiseTitleId}`);
             if (response.data.success) {
+                console.log(response.data);
+                
                 console.log('Share link analytics:', response.data.analytics);
             } else {
                 console.log('Failed to retrieve analytics');
