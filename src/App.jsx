@@ -59,7 +59,7 @@ const AppContent = () => {
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="*" element= {<NotFound/>} />
           <Route path="/walletBalance" element = {<WalletDetails/>}/>
-          <Route path="/analytics" element={<GetShareLinkAnalytics/>} />
+          <Route path="/analytics/:promiseTitleId" element={<GetShareLinkAnalytics/>} />
         </Routes>
      
     </>
