@@ -79,7 +79,7 @@ const ReceiverView = () => {
                 Cookies.set("shareToken", shareToken);
                 try {
                     // Send the share token in the request body with a POST request
-                    const response = await axios.post('https://auth-zxvu.onrender.com/api/auth/track', {
+                    const response = await axios.post(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}`, {
                         shareToken: shareToken // Send token in body
                     });
         
