@@ -13,7 +13,7 @@ const PaymentSuccessPage = () => {
 
     const [paymentStatus, setPaymentStatus] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [countdown, setCountdown] = useState(5); // Countdown state
+    const [countdown, setCountdown] = useState(10); // Countdown state
 
     const queryParams = new URLSearchParams(location.search);
     const reference = queryParams.get('reference');
