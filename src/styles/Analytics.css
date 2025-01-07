@@ -1,63 +1,40 @@
 .analytics-container {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
   
   .chart-container {
-    margin-bottom: 40px;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  h2 {
+  .chart-container h2 {
     text-align: center;
-    color: #333;
+    margin-bottom: 1rem;
   }
   
-  .line-chart, .pie-chart {
-    margin-top: 20px;
-    max-width: 600px; 
-  width: 90%; 
-  height: 300px; 
+  .chart-container .pie-chart,
+  .chart-container .line-chart,
+  .chart-container .bar-chart,
+  .chart-container .radar-chart,
+  .chart-container .doughnut-chart {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
   }
   
   .top-performing-date {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 40px;
     text-align: center;
-  }
-  
-  .top-performing-date h3 {
-    font-size: 1.5rem;
-    color: #FF6384;
-  }
-  
-  .top-performing-date p {
-    font-size: 1.1rem;
-    color: #333;
+    margin-top: 1rem;
   }
   
   @media (max-width: 768px) {
     .analytics-container {
-      padding: 15px;
-    }
-  
-    .chart-container {
-      margin-bottom: 20px;
-    }
-  
-    h2 {
-      font-size: 1.25rem;
-    }
-  
-    .top-performing-date h3 {
-      font-size: 1.2rem;
-    }
-  
-    .top-performing-date p {
-      font-size: 1rem;
+      padding: 1rem;
     }
   }
   
