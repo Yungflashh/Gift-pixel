@@ -1,8 +1,9 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Pie, Line } from "react-chartjs-2"; // Import Pie and Line charts from Chart.js
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js';
+import "../../styles/Analytics.css"
 
 // Register necessary components for Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement);
@@ -90,23 +91,31 @@ const GetShareLinkAnalytics = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Device Category Distribution</h2>
-      {chartData.labels ? (
-        <Pie data={chartData} />
-      ) : (
-        <p>Loading chart...</p>
-      )}
-      
-      <h2>Clicks Over Time</h2>
-      {lineChartData.labels ? (
-        <Line data={lineChartData} />
-      ) : (
-        <p>Loading chart...</p>
-      )}
-      
+    <div className="analytics-container">
+      <div className="chart-container">
+        <h2>Clicks Over Time</h2>
+        {lineChartData.labels ? (
+          <div className="line-chart">
+            <Line data={lineChartData} />
+          </div>
+        ) : (
+          <p>Loading chart...</p>
+        )}
+      </div>
+
+      <div className="chart-container">
+        <h2>Device Category Distribution</h2>
+        {chartData.labels ? (
+          <div className="pie-chart">
+            <Pie data={chartData} />
+          </div>
+        ) : (
+          <p>Loading chart...</p>
+        )}
+      </div>
+
       {topDate.date && (
-        <div>
+        <div className="top-performing-date">
           <h3>Top Performing Date</h3>
           <p>{topDate.date} with {topDate.count} clicks</p>
         </div>

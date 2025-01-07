@@ -1,0 +1,60 @@
+.analytics-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .chart-container {
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .line-chart, .pie-chart {
+    margin-top: 20px;
+  }
+  
+  .top-performing-date {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .top-performing-date h3 {
+    font-size: 1.5rem;
+    color: #FF6384;
+  }
+  
+  .top-performing-date p {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .analytics-container {
+      padding: 15px;
+    }
+  
+    .chart-container {
+      margin-bottom: 20px;
+    }
+  
+    h2 {
+      font-size: 1.25rem;
+    }
+  
+    .top-performing-date h3 {
+      font-size: 1.2rem;
+    }
+  
+    .top-performing-date p {
+      font-size: 1rem;
+    }
+  }
+  
