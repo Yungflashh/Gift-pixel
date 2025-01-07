@@ -3,7 +3,7 @@ import axios from "axios"
 
 const GetShareLinkAnalytics = async () => {
     
-    const promiseTitleId = "677cdda333c493617b66f2d4";
+    const promiseTitleId = "677d3984c4c379593aa69565";
         try {
             const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/analytics/${promiseTitleId}`);
             if (response.data.success) {
