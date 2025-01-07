@@ -29,7 +29,7 @@ const PaymentSuccessPage = () => {
             setCountdown((prev) => {
                 if (prev === 1) {
                     clearInterval(timer);
-                    navigate("/signin"); // Redirect to sign-in after 5 seconds
+                    navigate("/signin"); // Redirect to sign-in after countdown finishes
                 }
                 return prev - 1;
             });
@@ -56,7 +56,7 @@ const PaymentSuccessPage = () => {
             );
 
             if (response.data.success) {
-                setPaymentStatus('Payment successful! Your request has been processed.');
+                setPaymentStatus('Payment has already been made. Your request has been processed.');
             } else {
                 setPaymentStatus('Payment verification failed.');
             }
@@ -74,9 +74,9 @@ const PaymentSuccessPage = () => {
     return (
         <div className="payment-success-container">
             <div className="payment-status">
-                <h1>Payment Status</h1>
+                <h1>Payment Made</h1>
                 <p>{paymentStatus}</p>
-                <p>Redirecting in {countdown} seconds...</p>
+                <p>Redirecting to the sign-in page in {countdown} seconds...</p>
             </div>
         </div>
     );
