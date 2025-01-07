@@ -1,11 +1,11 @@
 import axios from "axios"
 import Cookies from "js-cookie"
 
-const getShareLinkAnalytics = async () => {
+const GetShareLinkAnalytics = async () => {
     
     const promiseTitleId = Cookies.get("promiseId")
         try {
-            const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/api/share/analytics/${promiseTitleId}`);
+            const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/analytics/${promiseTitleId}`);
             if (response.data.success) {
                 console.log('Share link analytics:', response.data.analytics);
             } else {
@@ -17,4 +17,4 @@ const getShareLinkAnalytics = async () => {
     };
 
 
-    export default getShareLinkAnalytics
+    export default GetShareLinkAnalytics

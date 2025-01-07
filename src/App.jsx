@@ -16,7 +16,8 @@ import Header from "./static/Header"
 import PaymentSuccess from "./pages/PaymentSuccessPage/PaymentSuccessPage"
 import NotFound from "./components/NotFound"
 import WalletDetails from "./pages/WalletPage/WalletDetails"
-import getShareLinkAnalytics from "./pages/AnalyticsPAge/Analytics"
+import getShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics"
+import GetShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics"
 
 
 const App = () => {
@@ -57,8 +58,8 @@ const AppContent = () => {
           <Route path="/promise-gift/:promiseTitleId" element={<ReceiverView />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="*" element= {<NotFound/>} />
-          <Route path="walletBalance" element = {<WalletDetails/>}/>
-          <Route path="analytics" element={<getShareLinkAnalytics/>} />
+          <Route path="/walletBalance" element = {<WalletDetails/>}/>
+          <Route path="/analytics" element={<GetShareLinkAnalytics/>} />
         </Routes>
      
     </>
