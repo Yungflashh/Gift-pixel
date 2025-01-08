@@ -86,7 +86,8 @@ const ResetPassword = () => {
         <WelcomeSection />
 
         <div className="resetpwrd-form-container">
-          <form onSubmit={handleSubmit}>
+          <fo
+          rm onSubmit={handleSubmit}>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <h2>Reset Your Password</h2>
             <p>Enter your new password below to reset it.</p>
@@ -124,11 +125,11 @@ const ResetPassword = () => {
             {/* Conditionally change button style and disable based on form validity */}
             <Button
               label="Reset Password"
-              styleClass={isFormValid?"primary-button-valid":"primary-button-disabled"}
+              styleClass="primary-button-valid"
               type="submit"
-              disabled={!isFormValid} 
+              
             />
-          </form>
+          </fo>
         </div>
       </div>
     </div>
