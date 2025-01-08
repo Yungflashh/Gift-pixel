@@ -124,7 +124,7 @@ const ResetPassword = () => {
               label="Reset Password"
               styleClass={isFormValid ? "primary-button-valid" : "primary-button"}
               type="submit"
-              disabled={!isFormValid}
+             
             />
           </form>
         </div>
