@@ -122,7 +122,7 @@ const ResetPassword = () => {
             {/* Conditionally change button style based on form validity */}
             <Button
               label="Reset Password"
-              styleClass={isFormValid ? "primary-button-valid"}
+              styleClass="primary-button-valid"
               type="submit"
              
             />
