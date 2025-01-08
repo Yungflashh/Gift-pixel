@@ -29,10 +29,9 @@ const ResetPassword = () => {
     // Reset error message
     setErrorMessage("");
 
-   console.log(resetToken);
-   console.log(password);
-   
-   
+    console.log(resetToken);
+    console.log(password);
+
     axios
       .post("https://auth-zxvu.onrender.com/api/auth/password-update/token", { password, resetToken })
       .then((response) => {
@@ -40,8 +39,6 @@ const ResetPassword = () => {
         alert("Your password has been successfully reset!");
       })
       .catch((error) => {
-        console.log(resetToken);
-        console.log(password);
         console.log("Error resetting password:", error);
         setErrorMessage(error.response.data.message); // Display error message
       });
@@ -124,12 +121,12 @@ const ResetPassword = () => {
               </span>
             </div>
 
-            {/* Conditionally change button style based on form validity */}
+            {/* Conditionally change button style and disable based on form validity */}
             <Button
               label="Reset Password"
               styleClass="primary-button-valid"
               type="submit"
-             
+              disabled={!isFormValid} // Disable the button if form is not valid
             />
           </form>
         </div>
