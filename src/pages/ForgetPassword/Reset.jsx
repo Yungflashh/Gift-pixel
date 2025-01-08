@@ -124,9 +124,9 @@ const ResetPassword = () => {
             {/* Conditionally change button style and disable based on form validity */}
             <Button
               label="Reset Password"
-              styleClass="primary-button-valid"
+              styleClass={isFormValid?"primary-button-valid":"primary-button-disabled"}
               type="submit"
-              disabled={!isFormValid} // Disable the button if form is not valid
+              disabled={!isFormValid} 
             />
           </form>
         </div>
