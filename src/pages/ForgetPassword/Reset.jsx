@@ -30,6 +30,8 @@ const ResetPassword = () => {
     setErrorMessage("");
 
    console.log(token);
+   console.log(password);
+   
    
     axios
       .post("https://auth-zxvu.onrender.com/api/auth/password-update/token", { password, token })
@@ -38,6 +40,8 @@ const ResetPassword = () => {
         alert("Your password has been successfully reset!");
       })
       .catch((error) => {
+        console.log(token);
+        console.log(password);
         console.log("Error resetting password:", error);
         setErrorMessage(error.response.data.message); // Display error message
       });
