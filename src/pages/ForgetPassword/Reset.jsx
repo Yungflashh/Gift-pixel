@@ -31,7 +31,7 @@ const ResetPassword = () => {
 
     // Send the new password to the backend for reset
     axios
-      .post("https://auth-zxvu.onrender.com/api/auth/password-update", { password, token })
+      .post("https://auth-zxvu.onrender.com/api/auth/password-update/token", { password, token })
       .then((response) => {
         console.log("Password reset successful:", response);
         alert("Your password has been successfully reset!");
