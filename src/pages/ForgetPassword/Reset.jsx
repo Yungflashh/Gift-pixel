@@ -86,8 +86,7 @@ const ResetPassword = () => {
         <WelcomeSection />
 
         <div className="resetpwrd-form-container">
-          <fo
-          rm onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <h2>Reset Your Password</h2>
             <p>Enter your new password below to reset it.</p>
@@ -129,7 +128,7 @@ const ResetPassword = () => {
               type="submit"
               
             />
-          </fo>
+          </form>
         </div>
       </div>
     </div>
