@@ -5,9 +5,10 @@ import FormInput from "../SignInPage/FormInput";
 import Button from "../../components/Button";
 import WelcomeSection from "../../components/WelcomeSection";
 import Input from "../../components/Inputs";
+import axios from "axios";
 
 const ForgetPassword = () => {
-  const [isEmailValid, setIsEmailValid] = useState(false); // State to track email validity
+  const [isEmailValid, setIsEmailValid] = useState(false); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +19,14 @@ const ForgetPassword = () => {
       return; // Prevent form submission
     }
 
-    alert("Password reset link has been sent to your email.");
+    // Sending email to the backend for password reset
+    axios.post("https://auth-zxvu.onrender.com/api/auth/reset-password", { email })
+      .then(response => {
+        alert("Password reset link has been sent to your email.");
+      })
+      .catch(error => {
+        alert("Error resetting password. Please try again.");
+      });
   };
 
   // Validate email on change and update button style
