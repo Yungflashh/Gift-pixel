@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { Pie, Line, Bar, Radar, Doughnut } from "react-chartjs-2"; // Import necessary charts
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement, BarElement, Filler, RadialLinearScale, Title } from 'chart.js'; // Import RadialLinearScale and Title
 import "../../styles/Analytics.css";
+import { useNavigate } from "react-router-dom";
 
 // Register necessary components for Chart.js
 ChartJS.register(
@@ -21,6 +22,7 @@ ChartJS.register(
 );
 
 const GetShareLinkAnalytics = () => {
+  const navigate = useNavigate();
   const [chartData, setChartData] = useState({});
   const [lineChartData, setLineChartData] = useState({});
   const [barChartData, setBarChartData] = useState({});
@@ -31,6 +33,13 @@ const GetShareLinkAnalytics = () => {
   useEffect(() => {
     const fetchAnalytics = async () => {
       const promiseTitleId = Cookies.get("promiseId");
+
+
+      if(!promiseTitleId){
+          // alert("Not an authenticated user")
+
+        navigate("/signin");
+      }
       try {
         const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/analytics/${promiseTitleId}`);
         if (response.data.success) {

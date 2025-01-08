@@ -6,10 +6,11 @@ import OtpInput from "react-otp-input";
 import { FaApple, FaFacebook, FaGoogle, FaAngleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import WelcomeSection from "../../components/WelcomeSection";
+import Cookies from "js-cookie"
 
 // I define the EmailVerificationPage component
 const EmailVerificationPage = () => {
-  // I use state hooks to manage OTP input, error messages, success messages, and loading state
+ const email =  Cookies.get("email")
   const [otp, setOtp] = useState(""); // I store the OTP entered by the user
   const [error, setError] = useState(""); // I store any error messages related to OTP verification
   const [successMessage, setSuccessMessage] = useState(""); // I store a success message if OTP is verified

@@ -26,7 +26,7 @@ const PromiseListPage = () => {
     // If the token is missing, redirect to the sign-in page
     if (!token) {
       console.error("Authentication token is missing");
-      navigate("/signin"); // Redirect to the sign-in page
+       // Redirect to the sign-in page
       return; // Stop further execution if no token is found
     }
 
@@ -42,6 +42,7 @@ const PromiseListPage = () => {
         setUser(response.data); // Assuming response.data contains the username
       })
       .catch((error) => {
+        navigate("/signin");
         console.error("Error fetching username:", error);
       });
 

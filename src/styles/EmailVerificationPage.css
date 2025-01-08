@@ -12,8 +12,9 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;  /* Use full width for smaller screens */
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto; /* Center the content */
+  /* border: 2px solid red; */
 }
 
 .welcome-section-otp {

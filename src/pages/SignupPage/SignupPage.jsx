@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/SignupPage.css";
 import Input from "../../components/Inputs";
 import Button from "../../components/Button";
-// import GiftPixelLogo from "../../assets/Giftpixel.svg"
+import Cookies from "js-cookie"
 import WelcomeSection from "../../components/WelcomeSection";
 
 const SignupPage = () => {
@@ -39,9 +39,12 @@ const SignupPage = () => {
       return;
     }
 
+   
     console.log("Form submitted:", formData);
 
     try {
+      Cookies.set('email', formData.email, { expires: 1, path: '/emailverificationpage' });
+
       const response = await fetch("https://auth-zxvu.onrender.com/api/auth/signup", {
         method: "POST",
         headers: {

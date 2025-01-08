@@ -5,11 +5,13 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie"; // Import js-cookie
 import axios from "axios"; // Import axios
 import SidePromise from "../../components/SidePromise";
+import { useNavigate } from "react-router-dom";
 
 const PromiseCard = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [user, setUser] = useState(null);  // Set initial value to null
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -34,6 +36,7 @@ const PromiseCard = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
         setLoading(false);
+        navigate("/signIn")
       });
   }, []);
 
