@@ -29,7 +29,8 @@ const ResetPassword = () => {
     // Reset error message
     setErrorMessage("");
 
-    // Send the new password to the backend for reset
+   console.log(token);
+   
     axios
       .post("https://auth-zxvu.onrender.com/api/auth/password-update/token", { password, token })
       .then((response) => {
