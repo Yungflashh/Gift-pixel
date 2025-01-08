@@ -8,7 +8,7 @@ import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Eye icon import
 
 const ResetPassword = () => {
-  const { token } = useParams(); // Get the reset token from the URL parameters
+  const { resetToken } = useParams(); // Get the reset resetToken from the URL parameters
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // State to store error message
@@ -29,18 +29,18 @@ const ResetPassword = () => {
     // Reset error message
     setErrorMessage("");
 
-   console.log(token);
+   console.log(resetToken);
    console.log(password);
    
    
     axios
-      .post("https://auth-zxvu.onrender.com/api/auth/password-update/token", { password, token })
+      .post("https://auth-zxvu.onrender.com/api/auth/password-update/token", { password, resetToken })
       .then((response) => {
         console.log("Password reset successful:", response);
         alert("Your password has been successfully reset!");
       })
       .catch((error) => {
-        console.log(token);
+        console.log(resetToken);
         console.log(password);
         console.log("Error resetting password:", error);
         setErrorMessage(error.response.data.message); // Display error message
