@@ -61,7 +61,7 @@ const AppContent = () => {
           <Route path="*" element= {<NotFound/>} />
           <Route path="/walletBalance" element = {<WalletDetails/>}/>
           <Route path="/analytics/:promiseTitleId" element={<GetShareLinkAnalytics/>} />
-          <Route path="/reset-password/:restToken" element = {<Reset/>} />
+          <Route path="/reset-password/:resetToken" element = {<Reset/>} />
         </Routes>
      
     </>
