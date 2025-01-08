@@ -58,7 +58,7 @@ const ResetPassword = () => {
 
   // Validate password length and complexity
   const validatePassword = (password) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/; // 7 characters minimum
     setIsPasswordValid(passwordRegex.test(password));
     setIsFormValid(password === confirmPassword && passwordRegex.test(password));
   };
