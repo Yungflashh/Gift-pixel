@@ -18,6 +18,7 @@ import NotFound from "./components/NotFound"
 import WalletDetails from "./pages/WalletPage/WalletDetails"
 import getShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics"
 import GetShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics"
+import Reset from "./pages/ForgetPassword/Reset"
 
 
 const App = () => {
@@ -60,6 +61,7 @@ const AppContent = () => {
           <Route path="*" element= {<NotFound/>} />
           <Route path="/walletBalance" element = {<WalletDetails/>}/>
           <Route path="/analytics/:promiseTitleId" element={<GetShareLinkAnalytics/>} />
+          <Route path="/reset-password/:restToken" element = {<Reset/>} />
         </Routes>
      
     </>
