@@ -158,24 +158,24 @@ const PromiseListPage = () => {
                     size={30} 
                     color="black" 
                     title="Analytics" 
-                    onClick={(e) => handleAnalytics(e, promise)} // Pass the event and promise
+                    onClick={(e) => handleAnalytics(e, promise)} 
                   />
                   <FaEdit 
-                    className="icon" 
+                    className="icon general-icon" 
                     size={30} 
                     color="black" 
                     title="Edit" 
                     onClick={handleEdit} 
                   />
                   <FaShareFromSquare 
-                    className="icon" 
+                    className="icon general-icon" 
                     size={30} 
                     color="black" 
                     title="Share" 
                     onClick={handleShare} 
                   />
                   <FiTrash2 
-                    className="icon" 
+                    className="icon general-icon" 
                     size={30} 
                     color="red" 
                     title="Delete" 

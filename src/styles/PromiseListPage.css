@@ -70,7 +70,7 @@
   display: flex;
   gap: 16px;
   position: absolute;
-  right: -350px; /* Adjust positioning */
+  right: -200px; /* Adjust positioning */
   top: 50%;
   transform: translateY(-50%);
   z-index: 1; /* Ensure icons are above other elements */
@@ -111,8 +111,12 @@
     gap: 10px;
   }
 
-  .icon-container {
-    right: -60px;
+  .icon-container{
+    right: 20px;
+  }
+
+  .general-icon{
+    display: none;
   }
 
   .icon {
