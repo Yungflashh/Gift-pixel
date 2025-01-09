@@ -154,6 +154,13 @@ const GetShareLinkAnalytics = () => {
 
   return (
     <div className="analytics-container">
+
+      {topDate.date && (
+          <div className="top-performing-date">
+            <h3>Top Performing Date</h3>
+            <p>{topDate.date} with {topDate.count} clicks</p>
+          </div>
+        )}  
       {/* Line Chart */}
       <div className="chart-container">
         <h2>Clicks Over Time</h2>
@@ -164,12 +171,7 @@ const GetShareLinkAnalytics = () => {
         ) : (
           <p>Loading chart...</p>
         )}
-        {topDate.date && (
-          <div className="top-performing-date">
-            <h3>Top Performing Date</h3>
-            <p>{topDate.date} with {topDate.count} clicks</p>
-          </div>
-        )}
+        
       </div>
 
       {/* Pie Chart */}

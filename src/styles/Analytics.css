@@ -30,6 +30,7 @@
   .top-performing-date {
     text-align: center;
     margin-top: 1rem;
+    background-color: #fff;
   }
   
   @media (max-width: 768px) {
