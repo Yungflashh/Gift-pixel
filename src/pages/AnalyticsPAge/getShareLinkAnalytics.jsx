@@ -158,7 +158,8 @@ const GetShareLinkAnalytics = () => {
       {topDate.date && (
           <div className="top-performing-date">
             <h3>Top Performing Date</h3>
-            <p>{topDate.date} with {topDate.count} clicks</p>
+            <p>{topDate.date}</p>
+            <p id="clicks">{topDate.count} clicks</p>
           </div>
         )}  
       {/* Line Chart */}

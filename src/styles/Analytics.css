@@ -34,16 +34,23 @@
     background-color: #fff;
     height: 200px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 
   }
 
   .top-performing-date h2{
-    text-align: left;
+    align-self: flex-start;
   }
 
   .top-performing-date p{
-    text-align: center;
+    /* text-align: center; */
     font-size : 30px;
+    align-self: center;
+  }
+
+  #clicks{
+    color: #ce2239;
   }
   
   @media (max-width: 768px) {
