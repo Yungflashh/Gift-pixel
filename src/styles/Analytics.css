@@ -36,6 +36,15 @@
     border-radius: 20px;
 
   }
+
+  .top-performing-date h2{
+    text-align: left;
+  }
+
+  .top-performing-date p{
+    text-align: center;
+    font-size : 30px;
+  }
   
   @media (max-width: 768px) {
     .analytics-container {
