@@ -174,7 +174,7 @@ const ReceiverView = () => {
     return (
         <div className="promise-detail-wrapper">
             <h2 className="promise-title">{ReceiverView.title}</h2>
-            <p className="promise-description">{ReceiverView.promiseDescription.description}</p>
+            {/* <p className="promise-description">{ReceiverView.promiseDescription.description}</p> */}
 
             <h3 className="request-header">Requests:</h3>
             {ReceiverView.requests.length > 0 ? (
