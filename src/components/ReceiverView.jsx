@@ -138,8 +138,8 @@ const ReceiverView = () => {
                 'https://auth-zxvu.onrender.com/api/auth/paystack/payment',
                 { orderId: requestId, amount, email },
                 {
-                    headers: { Authorization: `Bearer ${token}` },
-                    withCredentials: true,
+                    // headers: { Authorization: `Bearer ${token}` },
+                    // withCredentials: true,
                 }
             );
 
