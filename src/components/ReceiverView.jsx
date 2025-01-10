@@ -117,6 +117,9 @@ const ReceiverView = () => {
 
         const amount = ReceiverView.requests.requestValue
 
+        console.log(amount);
+        
+
         if (!amount) {
             setError('Amount is missing');
             return;
