@@ -11,6 +11,7 @@ import PromiseListPage from "./pages/PromiseListPage/PromiseListPage";
 import CurrentUserpage from "./pages/CurrentUserPage/CurrentUserpage";
 import PromiseDetailPage from "./pages/PromiseDetailPage/PromiseDetailPage";
 // import PromiseRequests from "./components/ListOfRequest"
+import { ToastContainer } from 'react-toastify';
 import ReceiverView from "./components/ReceiverView";
 import Header from "./static/Header";
 import PaymentSuccess from "./pages/PaymentSuccessPage/PaymentSuccessPage";
@@ -24,6 +25,8 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 const App = () => {
   return (
     <BrowserRouter>
+    <ToastContainer />
+
       <AppContent />
     </BrowserRouter>
   );

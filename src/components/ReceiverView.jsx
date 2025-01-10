@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify'; // Import toast from react-toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import the necessary CSS for Toastify
 import '../styles/ReceiverView.css';
 
 const ReceiverView = () => {
@@ -18,7 +20,7 @@ const ReceiverView = () => {
         try {
             const token = Cookies.get('token');
             if (!token) {
-                alert('You are not a registered user. Please sign up to make a payment.');
+                toast.error('You are not a registered user. Please sign up to make a payment.'); // Use toast for error
                 navigate('/signup');
                 return;
             }
@@ -33,12 +35,11 @@ const ReceiverView = () => {
             if (response.data.success) {
                 setEmail(response.data.email);
             } else {
-                alert('Unable to fetch user email. Please log in again.');
+                toast.error('Unable to fetch user email. Please log in again.'); // Use toast for error
                 navigate('/login');
             }
         } catch (error) {
-            console.error(error);
-            // alert('Error fetching email');
+            toast.error('Error fetching email'); // Use toast for error
         }
     };
 
@@ -91,7 +92,6 @@ const ReceiverView = () => {
                         console.log('Link access tracked successfully');
                     } else {
                        
-                        
                         console.log('Failed to track link access');
                     }
                 } catch (error) {
@@ -110,7 +110,7 @@ const ReceiverView = () => {
         fetchEmail();
         const token = Cookies.get('token');
         if (!token) {
-            alert('You are not a registered user. Please sign up to make a payment.');
+            toast.error('You are not a registered user. Please sign up to make a payment.'); // Use toast for error
             navigate('/signup');
             return;
         }
@@ -123,7 +123,7 @@ const ReceiverView = () => {
         }
 
         if (!email) {
-            alert('Unable to fetch your email. Please try again.');
+            toast.error('Unable to fetch your email. Please try again.'); // Use toast for error
             return;
         }
 
@@ -160,21 +160,18 @@ const ReceiverView = () => {
         window.location.href = requestValue;
     };
 
-   
-
-   
     if (loading) {
         return <div className="loading-spinner">Loading...</div>;
     }
 
     if (error) {
+        toast.error(error); // Display error message via toast
         return <div className="error-message-box">{error}</div>;
     }
 
     return (
         <div className="promise-detail-wrapper">
             <h2 className="promise-title">{ReceiverView.title}</h2>
-            {/* <p className="promise-description">{ReceiverView.promiseDescription.description}</p> */}
 
             <h3 className="request-header">Requests:</h3>
             {ReceiverView.requests.length > 0 ? (
