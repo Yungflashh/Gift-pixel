@@ -51,7 +51,7 @@ const ReceiverView = () => {
                 const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/get-promise-details/${promiseTitleId}`);
                 const username = response.data.username;
                 Cookies.set("username", username);
-                console.log(response);
+                // console.log(response);
                 
 
                 if (response.data.success) {
