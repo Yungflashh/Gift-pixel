@@ -58,8 +58,6 @@ const ReceiverView = () => {
                     setReceiverView(response.data.promise);
                     console.log(response.data.promise);
                     
-                   Cookies.set("amount", response.data.promise.requestValue)
-                    
                     trackShareLink()
                     
                     if (response.data.promise.shareToken) {
@@ -108,22 +106,9 @@ const ReceiverView = () => {
     }, [promiseTitleId, shareToken]); // Adding `shareToken` dependency to ensure it's available when tracking
 
     // Handle the payment request
-    const handlePayRequest = async (requestId) => {
-       
-        // fetchEmail();
-        // const token = Cookies.get('token');
-        // if (!token) {
-        //     toast.error('You are not a registered user. Please sign up to make a payment.'); // Use toast for error
-        //     navigate('/signup');
-        //     return;
-        // }
-
-        const amount = Cookies.get("amount")
-        console.log("This is the requesId", requestId);
-        
-
-        console.log(amount);
-        
+    const handlePayRequest = async (requestId, amount) => {
+        console.log("This is the requestId", requestId);
+        console.log("This is the amount", amount);
 
         if (!amount) {
             setError('Amount is missing');
@@ -131,7 +116,7 @@ const ReceiverView = () => {
         }
 
         if (!email) {
-            toast.error('Unable to fetch your email. Please try again.'); // Use toast for error
+            toast.error('Unable to get your email. Please try again.'); // Use toast for error
             return;
         }
 
