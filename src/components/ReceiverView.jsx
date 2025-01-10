@@ -117,6 +117,8 @@ const ReceiverView = () => {
         // }
 
         const amount = Cookies.get("amount")
+        console.log(requestId);
+        
 
         console.log(amount);
         
