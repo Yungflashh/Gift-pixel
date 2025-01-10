@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { toast } from 'react-toastify'; // Import toast from react-toastify
-import 'react-toastify/dist/ReactToastify.css'; // Import the necessary CSS for Toastify
+import { toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/ReceiverView.css';
 
 const ReceiverView = () => {
@@ -12,60 +12,46 @@ const ReceiverView = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [email, setEmail] = useState('');
-    const [shareToken, setShareToken] = useState(null); // New state to hold the share token
-    const [isModalOpen, setIsModalOpen] = useState([false, "", Number]); // Modal visibility state
+    const [shareToken, setShareToken] = useState(null);
+    const [modalState, setModalState] = useState({ isOpen: false, requestId: null, amount: null });
     const navigate = useNavigate();
 
-    // Fetch user email for payment process
     const fetchEmail = async () => {
         try {
             const token = Cookies.get('token');
             if (!token) {
-                toast.error('You are not a registered user. Please sign up to make a payment.'); // Use toast for error
+                toast.error('You are not a registered user. Please sign up to make a payment.');
                 navigate('/signup');
                 return;
             }
-
             const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/get-user-email', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                },
+                headers: { 'Authorization': `Bearer ${token}` },
                 withCredentials: true,
             });
 
             if (response.data.success) {
                 setEmail(response.data.email);
             } else {
-                toast.error('Unable to fetch user email. Please log in again.'); // Use toast for error
+                toast.error('Unable to fetch user email. Please log in again.');
                 navigate('/login');
             }
         } catch (error) {
-            toast.error('Error fetching email'); // Use toast for error
+            toast.error('Error fetching email');
         }
     };
 
-    // Fetch promise details and track the link access using shareToken
     useEffect(() => {
         const fetchReceiverView = async () => {
             try {
                 const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/get-promise-details/${promiseTitleId}`);
                 const username = response.data.username;
                 Cookies.set("username", username);
-                // console.log(response);
-                
 
                 if (response.data.success) {
                     setReceiverView(response.data.promise);
-                    console.log(response.data.promise);
-                    
-                    trackShareLink()
-                    
                     if (response.data.promise.shareToken) {
-                        console.log(response.data.promise.shareToken);
-                        
                         setShareToken(response.data.promise.shareToken);
                     }
-
                 } else {
                     setError('Promise not found');
                 }
@@ -75,62 +61,41 @@ const ReceiverView = () => {
                 setLoading(false);
             }
         };
-        console.log(shareToken);
-        
-        // Track the access when the promise details are fetched
-        const trackShareLink = async () => {
-            if (shareToken) {
-                try {
-                    console.log(shareToken, "linee");
-                    
-                    Cookies.set("promiseId", promiseTitleId);
 
-                    const response = await axios.post(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}/${shareToken}`);
-
-                    console.log(response.data);
-                    
-                    if (response.data.success) {
-                        console.log('Link access tracked successfully');
-                    } else {
-                        console.log('Failed to track link access');
-                    }
-                } catch (error) {
-                    console.error('Error tracking share link access:', error);
-                }
-            }
-        };
-
-        // Fetch the promise data and track the access
         fetchReceiverView();
-        trackShareLink(); // Track the link when the page is loaded
-    }, [promiseTitleId, shareToken]); // Adding `shareToken` dependency to ensure it's available when tracking
+    }, [promiseTitleId]);
 
-    // Handle the payment request
-    const handlePayRequest = async (requestId, amount) => {
-        console.log("This is the requestId", requestId);
-        console.log("This is the amount", amount);
-
-        if (!amount) {
-            setError('Amount is missing');
-            return;
+    useEffect(() => {
+        if (shareToken) {
+            trackShareLink();
         }
+    }, [shareToken]);
 
-        if (!email) {
-            toast.error('Unable to get your email. Please try again.'); // Use toast for error
+    const trackShareLink = async () => {
+        if (shareToken) {
+            try {
+                Cookies.set("promiseId", promiseTitleId);
+                const response = await axios.post(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}/${shareToken}`);
+                if (response.data.success) {
+                    console.log('Link access tracked successfully');
+                } else {
+                    console.log('Failed to track link access');
+                }
+            } catch (error) {
+                console.error('Error tracking share link access:', error);
+            }
+        }
+    };
+
+    const handlePayRequest = async (requestId, amount) => {
+        if (!amount || !email) {
+            toast.error('Please provide all required fields.');
             return;
         }
 
         try {
             Cookies.set('requestId', requestId, { expires: 7 });
-
-            const response = await axios.post(
-                'https://auth-zxvu.onrender.com/api/auth/paystack/payment',
-                { orderId: requestId, amount, email },
-                {
-                    // headers: { Authorization: `Bearer ${token}` },
-                    // withCredentials: true,
-                }
-            );
+            const response = await axios.post('https://auth-zxvu.onrender.com/api/auth/paystack/payment', { orderId: requestId, amount, email });
 
             if (response.data.success) {
                 const authorizationUrl = response.data.authorization_url;
@@ -148,19 +113,13 @@ const ReceiverView = () => {
         }
     };
 
-    // Handle "Buy Now" redirect for gift items
-    const handleBuyNowRedirect = (requestValue) => {
-        window.location.href = requestValue;
-    };
-
-    // Handle modal submit
-    const handleSubmitEmail = () => {
+    const handleSubmitEmail = (requestId, amount) => {
         if (!email) {
             toast.error('Please enter a valid email');
             return;
         }
-        setIsModalOpen(false);
-        handlePayRequest(); // Call payment logic after email submission
+        setModalState({ isOpen: false, requestId: null, amount: null });
+        handlePayRequest(requestId, amount);
     };
 
     if (loading) {
@@ -168,14 +127,13 @@ const ReceiverView = () => {
     }
 
     if (error) {
-        toast.error(error); // Display error message via toast
+        toast.error(error);
         return <div className="error-message-box">{error}</div>;
     }
 
     return (
         <div className="promise-detail-wrapper">
             <h2 className="promise-title">{ReceiverView.title}</h2>
-
             <h3 className="request-header">Requests:</h3>
             {ReceiverView.requests.length > 0 ? (
                 <ul className="request-list">
@@ -202,7 +160,7 @@ const ReceiverView = () => {
                                 ) : (
                                     <button
                                         className="pay-now-btn"
-                                        onClick={() => setIsModalOpen(true, request._id, request.requestValue)} // Open modal to input email
+                                        onClick={() => setModalState({ isOpen: true, requestId: request._id, amount: request.requestValue })}
                                     >
                                         Pay Now
                                     </button>
@@ -216,7 +174,7 @@ const ReceiverView = () => {
             )}
 
             {/* Modal for email input */}
-            {isModalOpen && (
+            {modalState.isOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <h3>Enter Your Email</h3>
@@ -227,8 +185,8 @@ const ReceiverView = () => {
                             placeholder="Enter your email" 
                             required
                         />
-                        <button onClick={handleSubmitEmail( request._id, request.requestValue)}>Submit</button>
-                        <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+                        <button onClick={() => handleSubmitEmail(modalState.requestId, modalState.amount)}>Submit</button>
+                        <button onClick={() => setModalState({ isOpen: false, requestId: null, amount: null })}>Cancel</button>
                     </div>
                 </div>
             )}
