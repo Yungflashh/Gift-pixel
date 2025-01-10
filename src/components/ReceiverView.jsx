@@ -11,8 +11,9 @@ const ReceiverView = () => {
     const [ReceiverView, setReceiverView] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [email, setEmail] = useState('');
     const [shareToken, setShareToken] = useState(null); // New state to hold the share token
+    const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
     const navigate = useNavigate();
 
     // Fetch user email for payment process
@@ -63,7 +64,6 @@ const ReceiverView = () => {
                         setShareToken(response.data.promise.shareToken);
                     }
 
-                   
                 } else {
                     setError('Promise not found');
                 }
@@ -73,8 +73,8 @@ const ReceiverView = () => {
                 setLoading(false);
             }
         };
-            console.log(shareToken);
-            
+        console.log(shareToken);
+        
         // Track the access when the promise details are fetched
         const trackShareLink = async () => {
             if (shareToken) {
@@ -85,13 +85,11 @@ const ReceiverView = () => {
 
                     const response = await axios.post(`https://auth-zxvu.onrender.com/api/auth/track/${promiseTitleId}/${shareToken}`);
 
-
                     console.log(response.data);
                     
                     if (response.data.success) {
                         console.log('Link access tracked successfully');
                     } else {
-                       
                         console.log('Failed to track link access');
                     }
                 } catch (error) {
@@ -99,7 +97,7 @@ const ReceiverView = () => {
                 }
             }
         };
-        
+
         // Fetch the promise data and track the access
         fetchReceiverView();
         trackShareLink(); // Track the link when the page is loaded
@@ -160,6 +158,16 @@ const ReceiverView = () => {
         window.location.href = requestValue;
     };
 
+    // Handle modal submit
+    const handleSubmitEmail = () => {
+        if (!email) {
+            toast.error('Please enter a valid email');
+            return;
+        }
+        setIsModalOpen(false);
+        handlePayRequest(); // Call payment logic after email submission
+    };
+
     if (loading) {
         return <div className="loading-spinner">Loading...</div>;
     }
@@ -199,7 +207,7 @@ const ReceiverView = () => {
                                 ) : (
                                     <button
                                         className="pay-now-btn"
-                                        onClick={() => handlePayRequest(request._id)}
+                                        onClick={() => setIsModalOpen(true)} // Open modal to input email
                                     >
                                         Pay Now
                                     </button>
@@ -210,6 +218,24 @@ const ReceiverView = () => {
                 </ul>
             ) : (
                 <p className="no-requests-message">No requests available for this promise.</p>
+            )}
+
+            {/* Modal for email input */}
+            {isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h3>Enter Your Email</h3>
+                        <input 
+                            type="email" 
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)} 
+                            placeholder="Enter your email" 
+                            required
+                        />
+                        <button onClick={handleSubmitEmail}>Submit</button>
+                        <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+                    </div>
+                </div>
             )}
         </div>
     );
