@@ -51,6 +51,8 @@ const ReceiverView = () => {
                 const response = await axios.get(`https://auth-zxvu.onrender.com/api/auth/get-promise-details/${promiseTitleId}`);
                 const username = response.data.username;
                 Cookies.set("username", username);
+                console.log(response);
+                
 
                 if (response.data.success) {
                     setReceiverView(response.data.promise);
@@ -105,7 +107,7 @@ const ReceiverView = () => {
 
     // Handle the payment request
     const handlePayRequest = async (requestId) => {
-        fetchEmail();
+        // fetchEmail();
         const token = Cookies.get('token');
         if (!token) {
             toast.error('You are not a registered user. Please sign up to make a payment.'); // Use toast for error
