@@ -56,6 +56,8 @@ const ReceiverView = () => {
 
                 if (response.data.success) {
                     setReceiverView(response.data.promise);
+                    console.log(response.data.promise);
+                    
                    Cookies.set("amount", response.data.promise.requestValue)
                     
                     trackShareLink()
