@@ -90,7 +90,12 @@ const Header = () => {
 
       <div className="profile-container">
         <IoNotifications size={20} onClick={handleNotificationClick} />
+
+
+        <Link to={"/profileSettings"} className="anchor-link" >
         <CgProfile size={24} />
+
+        </Link>
       </div>
 
       {/* Hamburger Menu Icon */}

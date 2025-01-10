@@ -84,7 +84,7 @@ const PromiseListPage = () => {
   const handleAnalytics = (e, promise) => {
     e.stopPropagation(); // Prevent event propagation to parent card
     Cookies.set("promiseId", promise._id);
-    navigate("/analytics/:promiseTitleId");
+    navigate("/analytics");
   };
 
   const handlePromiseClick = (promise) => {
