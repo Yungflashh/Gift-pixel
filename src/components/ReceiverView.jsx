@@ -13,7 +13,7 @@ const ReceiverView = () => {
     const [error, setError] = useState(null);
     const [email, setEmail] = useState('');
     const [shareToken, setShareToken] = useState(null); // New state to hold the share token
-    const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
+    const [isModalOpen, setIsModalOpen] = useState([false, "", Number]); // Modal visibility state
     const navigate = useNavigate();
 
     // Fetch user email for payment process
@@ -202,7 +202,7 @@ const ReceiverView = () => {
                                 ) : (
                                     <button
                                         className="pay-now-btn"
-                                        onClick={() => setIsModalOpen(true)} // Open modal to input email
+                                        onClick={() => setIsModalOpen(true, request._id, request.requestValue)} // Open modal to input email
                                     >
                                         Pay Now
                                     </button>
@@ -227,7 +227,7 @@ const ReceiverView = () => {
                             placeholder="Enter your email" 
                             required
                         />
-                        <button onClick={handleSubmitEmail}>Submit</button>
+                        <button onClick={handleSubmitEmail( request._id, request.requestValue)}>Submit</button>
                         <button onClick={() => setIsModalOpen(false)}>Cancel</button>
                     </div>
                 </div>
