@@ -56,7 +56,7 @@ const ReceiverView = () => {
 
                 if (response.data.success) {
                     setReceiverView(response.data.promise);
-                    console.log(response.data);
+                   Cookies.set("amount", response.data.promise.requestValue)
                     
                     trackShareLink()
                     
@@ -107,6 +107,7 @@ const ReceiverView = () => {
 
     // Handle the payment request
     const handlePayRequest = async (requestId) => {
+       
         // fetchEmail();
         // const token = Cookies.get('token');
         // if (!token) {
@@ -115,7 +116,7 @@ const ReceiverView = () => {
         //     return;
         // }
 
-        const amount = ReceiverView.requests.requestValue
+        const amount = Cookies.get("amount")
 
         console.log(amount);
         
