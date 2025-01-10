@@ -108,14 +108,14 @@ const ReceiverView = () => {
     // Handle the payment request
     const handlePayRequest = async (requestId) => {
         // fetchEmail();
-        const token = Cookies.get('token');
-        if (!token) {
-            toast.error('You are not a registered user. Please sign up to make a payment.'); // Use toast for error
-            navigate('/signup');
-            return;
-        }
+        // const token = Cookies.get('token');
+        // if (!token) {
+        //     toast.error('You are not a registered user. Please sign up to make a payment.'); // Use toast for error
+        //     navigate('/signup');
+        //     return;
+        // }
 
-        const amount = ReceiverView.requests.find((req) => req._id === requestId)?.requestValue;
+        const amount = ReceiverView.requests.requestValue
 
         if (!amount) {
             setError('Amount is missing');
