@@ -16,29 +16,7 @@ const ReceiverView = () => {
     const [modalState, setModalState] = useState({ isOpen: false, requestId: null, amount: null });
     const navigate = useNavigate();
 
-    const fetchEmail = async () => {
-        try {
-            const token = Cookies.get('token');
-            if (!token) {
-                toast.error('You are not a registered user. Please sign up to make a payment.');
-                navigate('/signup');
-                return;
-            }
-            const response = await axios.get('https://auth-zxvu.onrender.com/api/auth/get-user-email', {
-                headers: { 'Authorization': `Bearer ${token}` },
-                withCredentials: true,
-            });
-
-            if (response.data.success) {
-                setEmail(response.data.email);
-            } else {
-                toast.error('Unable to fetch user email. Please log in again.');
-                navigate('/login');
-            }
-        } catch (error) {
-            toast.error('Error fetching email');
-        }
-    };
+   
 
     useEffect(() => {
         const fetchReceiverView = async () => {
