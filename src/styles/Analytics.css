@@ -1,0 +1,63 @@
+.analytics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #f2dfd8;
+  }
+  
+  .chart-container {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-container .pie-chart,
+  .chart-container .line-chart,
+  .chart-container .bar-chart,
+  .chart-container .radar-chart,
+  .chart-container .doughnut-chart {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .top-performing-date {
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #fff;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+
+  }
+
+  .top-performing-date h2{
+    align-self: flex-start;
+  }
+
+  .top-performing-date p{
+    /* text-align: center; */
+    font-size : 30px;
+    align-self: center;
+  }
+
+  #clicks{
+    color: #ce2239;
+  }
+  
+  @media (max-width: 768px) {
+    .analytics-container {
+      padding: 1rem;
+    }
+  }
+  

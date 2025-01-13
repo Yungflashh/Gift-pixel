@@ -1,0 +1,237 @@
+/* Container */
+.email-container {
+  background-color: #fdece4; 
+  height: 100vh;
+  position: relative;
+  padding: 0 15px; /* Added padding for small screens */
+}
+
+/* Page layout */
+.EmailVerificationPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;  /* Use full width for smaller screens */
+  /* max-width: 1200px; */
+  margin: 0 auto; /* Center the content */
+  /* border: 2px solid red; */
+}
+
+.welcome-section-otp {
+  width: 100%;
+  padding: 40px;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.welcome-section-otp h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.welcome-section-otp p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.form-container-otp {
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px; /* Set a max width for better responsiveness */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  margin-left: 0;
+  margin-top: 30px; /* Space between sections */
+}
+
+.Back {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0px;
+  cursor: pointer;
+}
+
+.Back svg {
+  margin-right: 8px;
+}
+
+#verify-text {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.inputStyle {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem;
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.verifyBtn {
+  width: 100%;
+  height: 45px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: #999;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.verifyBtn.active {
+  background: red;
+  color: white;
+}
+
+#Resend-OTP {
+  text-align: center;
+  color: #666;
+  margin-top: 20px;
+}
+
+#Resend-OTP span {
+  color: red;
+  cursor: pointer;
+}
+
+.span {
+  margin-top: -20px;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.social-icon svg {
+  cursor: pointer;
+}
+
+.acctSettings {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.acctSettings #span {
+  color: red;
+  text-decoration: none;
+}
+
+.acctSettings #span:hover {
+  text-decoration: underline;
+}
+
+.bottom-left-image-otp {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  z-index: -1;
+}
+
+.otp-form {
+  margin-top: 20px;
+}
+
+.otp-form input {
+  width: 100% !important;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+
+.success-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 884px) {
+  .EmailVerificationPage {
+    flex-direction: column;
+    align-items: center; /* Stack the sections vertically */
+  }
+
+  .welcome-section-otp {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .form-container-otp {
+    width: 90%; /* Full width on smaller screens */
+    margin: 40px 0px;
+  }
+
+  .bottom-left-image-otp {
+    width: 250px;
+    position: relative;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-section-otp h1 {
+    font-size: 1.5rem;
+  }
+
+  .welcome-section-otp p {
+    font-size: 1rem; 
+  }
+
+  .inputStyle {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+
+  .social-icon {
+    gap: 15px;
+  }
+
+  .bottom-left-image-otp {
+    width: 150px;
+  }
+
+  .verifyBtn {
+    font-size: 0.9rem;
+    height: 40px;
+  }
+
+  .acctSettings p {
+    font-size: 0.85rem;
+  }
+}

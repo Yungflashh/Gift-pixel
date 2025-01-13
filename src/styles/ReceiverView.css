@@ -1,0 +1,239 @@
+/* Wrapper for the entire Promise details */
+.promise-detail-wrapper {
+    margin: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Title of the Promise */
+.promise-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+/* Description of the Promise */
+.promise-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+/* Heading for the Requests section */
+.request-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* List of all requests */
+.request-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Each individual request item */
+.request-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Styling for request types like "gift-item" */
+.request-type {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling for request values */
+.request-value {
+    color: #007bff;
+}
+
+/* Container for payment status */
+.payment-status-container {
+    margin-top: 10px;
+}
+
+/* Paid status text */
+.payment-status-paid {
+    color: green;
+    font-weight: bold;
+}
+
+/* Unpaid status text */
+.payment-status-unpaid {
+    color: red;
+    font-weight: bold;
+}
+
+/* "Buy Now" button */
+.buy-now-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* "Pay Now" button */
+.pay-now-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Loading state */
+.loading-spinner {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 50px;
+}
+
+/* Error message container */
+.error-message-box {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+}
+
+/* No requests available message */
+.no-requests-message {
+    font-size: 1.2rem;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}
+
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .promise-title {
+        font-size: 1.5rem;
+    }
+
+    .promise-description {
+        font-size: 0.9rem;
+    }
+
+    .request-header {
+        font-size: 1.1rem;
+    }
+
+    .request-type, .request-value {
+        font-size: 0.9rem;
+    }
+
+    .request-item {
+        margin-bottom: 10px;
+    }
+
+    .buy-now-btn, .pay-now-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .loading-spinner {
+        font-size: 1.2rem;
+    }
+
+    .no-requests-message {
+        font-size: 1rem;
+    }
+}
+
+/* Media Query for Very Small Screens (e.g., mobile phones in portrait mode) */
+@media (max-width: 480px) {
+    .promise-title {
+        font-size: 1.2rem;
+    }
+
+    .promise-description {
+        font-size: 0.85rem;
+    }
+
+    .request-header {
+        font-size: 1rem;
+    }
+
+    .request-type, .request-value {
+        font-size: 0.8rem;
+    }
+
+    .request-item {
+        margin-bottom: 8px;
+    }
+
+    .buy-now-btn, .pay-now-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .loading-spinner {
+        font-size: 1rem;
+    }
+
+    .no-requests-message {
+        font-size: 0.9rem;
+    }
+}
