@@ -1,0 +1,60 @@
+.AccountsettingPage{
+    background: rgba(242, 223, 216, 1);
+    height: 100vh;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    
+.AccountsettingPage-box{
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 40%;
+    height: 95vh;
+    line-height: 2.5rem;
+    padding: 30px;
+}
+.Notification{
+    border: 1px solid rgba(242, 223, 216, 1);
+    border-radius: 10px;
+    height: 70px;
+    
+    p{
+        font-size: 12px;
+    }
+}
+.email-notification{
+    margin-top: -20px;
+}
+.services{
+    p{
+        font-size: 14px;
+    }
+}
+.toggle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 5px; */
+}
+.toggle-icon{
+    color: red;
+    font-size: 30px;
+}
+ .center{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }   
+ .delete{
+    color: red;
+    justify-content: center;
+    align-items: center;
+ }
+ .others{
+    p{
+        font-size: 14px;
+        word-spacing: 2px;
+    }
+ }

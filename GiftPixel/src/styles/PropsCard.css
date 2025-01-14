@@ -1,0 +1,31 @@
+.props-card{
+    background: white;
+    width: 300px;
+    height: 500px;
+}
+
+.share{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FF5050;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+   
+}
+.share-button{
+    background: none;
+    border: none;
+    color: #fff;
+    text-align: center;
+}
+
+.add-to-list-button{
+    background: black;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+}

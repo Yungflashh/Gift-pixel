@@ -1,0 +1,81 @@
+.analytics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #f2dfd8;
+  padding: 1rem;
+}
+
+.top-performing-date {
+  text-align: center;
+  margin-top: 1rem;
+  background-color: #fff;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.top-performing-date h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.top-performing-date p {
+  font-size: 30px;
+  font-weight: bold;
+  align-self: center;
+}
+
+#clicks {
+  color: #ce2239;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.chart-container .pie-chart,
+.chart-container .line-chart,
+.chart-container .bar-chart,
+.chart-container .radar-chart,
+.chart-container .doughnut-chart {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Flexbox to display charts beside each other */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Make the layout more compact on smaller screens */
+@media (max-width: 768px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-performing-date {
+    height: auto;
+  }
+}

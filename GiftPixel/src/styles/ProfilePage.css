@@ -1,0 +1,155 @@
+
+.setting-page {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(242, 223, 216, 1);
+}
+
+.profile-account-settingbox, .info-box {
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* .profile:hover {
+  background: rgba(242, 242, 242, 1);
+  width: 10rem;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+} */
+
+.profile-account-settingbox {
+  width: 20%;
+  height: 70vh;
+}
+
+.info-box {
+  width: 50%;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.setting-item svg {
+  margin-right: 8px;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.profileImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.notepen-icon {
+  margin-left: -20px;
+  background-color: antiquewhite;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: antiquewhite;
+  border-radius: 50%;
+  color: red;
+  margin-left: 10px;
+}
+
+.icon:hover {
+  background-color: #f0f0f0;
+}
+
+.formrow {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.general {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.name {
+  width: 95%;
+}
+
+.Custom-PasswordInput {
+  width: 100%;
+}
+
+.inputContainer input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.inputContainer input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.PasswordInput {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.PasswordToggle {
+  position: absolute;
+  top: 80%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.ValidationMessage {
+  list-style: none;
+  padding: 0;
+}
+
+.ValidationMessage li {
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.ValidationMessage .valid {
+  color: green;
+}
+
+.ValidationMessage .invalid {
+  color: red;
+}
+

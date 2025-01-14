@@ -1,0 +1,144 @@
+.promise-list-container {
+  background-color: #f2dfd8;
+  min-height: 100vh;
+}
+
+.promise-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensure vertical alignment of elements */
+}
+
+.btn-to-createPromise {
+  background: #FF5050;
+  width: 252px;
+  height: 58px; /* Fixed height */
+  border-radius: 50px;
+  border: none;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.promise-card {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically on smaller screens */
+  gap: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 70%; /* Full width on small screens */
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Important for positioning the icon container */
+  transition: transform 0.2s ease-in-out;
+}
+
+.promise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timestamp {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.promise-card h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #333;
+}
+
+.icon-container {
+  display: flex;
+  gap: 16px;
+  position: absolute;
+  right: -70px; /* Adjust positioning */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1; /* Ensure icons are above other elements */
+}
+
+.icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.promise-card:hover .icon {
+  opacity: 1;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a semi-transparent background */
+  z-index: 9999;
+}
+
+@media (max-width: 600px) {
+  .promise-cards-container {
+    padding: 8px;
+  }
+
+  .promise-card {
+    width: 100%;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .icon-container{
+    right: 20px;
+  }
+
+  .general-icon{
+    display: none;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  .details-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-to-createPromise {
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .promise-card h3 {
+    font-size: 1rem;
+  }
+
+  .timestamp {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,281 @@
+/* Section container */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: rgba(242, 223, 216, 1);
+    height: 90vh;
+    position: relative;
+  }
+  
+  /* Hero content */
+  .hero-content {
+    max-width: 50%;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .hero-title span {
+    color: #ff6e6e;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  
+  .hero-button {
+    padding: 15px 30px;
+    background-color: #ff6e6e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .hero-button:hover {
+    background-color: #e85d5d;
+  }
+  
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: -10px;
+    border: 2px solid #fff;
+  }
+  
+  .avatar-rating {
+    font-size: 0.9rem;
+    color: #777;
+    margin-left: 10px;
+  }
+  
+  /* Hero images */
+ 
+  
+  .image-container {
+    background-color: #fbfaf9;
+    border-radius: 50%;
+    padding: 30px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .image-container img {
+    width: 80px;
+    height: auto;
+  }
+  
+  .bike-container {
+    background-color: rgba(64, 90, 122, 1);
+    border-radius: 50%;
+    padding: 30px;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    
+  }
+  
+  .bike-container img {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    bottom: -70px;
+    right: 10px;
+  }
+  
+  .camera-container {
+    background-color: #cde9ca;
+    border-radius: 50%;
+    padding: 20px;
+    position: relative;
+    top: 70px;
+  }
+  
+  .camera-container img {
+    width: 80px;
+    height: auto;
+    top: 10px;
+  }
+  
+  .watch-container {
+    background-color: rgba(205, 206, 209, 1);
+    border-radius: 50%;
+    padding: 15px;
+    position: relative;
+    top: -90px;
+    right: 20px;
+  }
+  
+  .watch-container img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .laptop-container {
+    background-color: #f7c3c3;
+    border-radius: 50%;
+    padding: 20px;
+    position: relative;
+    right: 10px;
+  }
+  
+  .laptop-container img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .phone-container {
+    background-color: #fff5e5;
+    border-radius: 50%;
+    padding: 35px;
+    width: 30px;
+    height: 30px;
+    margin-top: 90px;
+  }
+  
+  .phone-container img {
+    width: 90px;
+    height: 60px;
+  }
+  
+  .car-container {
+    background-color: #fcf0f0;
+    border-radius: 50%;
+    padding: 25px;
+  }
+  
+  .car-container img {
+    width: 70px;
+    height: auto;
+  }
+  /* Section container */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px;
+    background-color: #fbeae5;
+    height: 100vh;
+    position: relative;
+  }
+  
+  /* Hero content */
+  .hero-content {
+    max-width: 60%;
+  }
+  
+  .hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .hero-title span {
+    color: #ff6e6e;
+  }
+  
+  .hero-description {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+  
+  .hero-button {
+    padding: 20px 40px;
+    background-color: #ff6e6e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .hero-button:hover {
+    background-color: #e85d5d;
+  }
+  
+  /* Avatar and Ratings */
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .avatars {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: -10px;
+    border: 3px solid #fff;
+  }
+  
+  .rating {
+    display: flex;
+    flex-direction: column; /* Align in a column */
+    align-items: flex-start;
+    margin-left: 20px;
+  }
+  
+  .stars {
+    font-size: 1.5rem; /* Bigger star size */
+    color: #ffc107; /* Star Yellow Color */
+    margin-bottom: 5px; /* Space between stars and text */
+  }
+  
+  .rating-number {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Hero images */
+  .hero-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 40%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-container {
+    background-color: #fbfaf9;
+    border-radius: 50%;
+    padding: 30px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .image-container img {
+    width: 80px;
+    height: auto;
+  }
+  
+  /* Adjust other image containers (bike, camera, etc.) as needed */
+  

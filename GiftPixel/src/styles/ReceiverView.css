@@ -1,0 +1,109 @@
+/* Make sure the container of the request list items is a flex container */
+.request-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute space evenly between the elements */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* For the request type and value to be in a straight line */
+.request-type,
+.request-value {
+    margin-right: 10px; /* Space between the request type and value */
+    font-weight: normal;
+}
+
+/* Container for the payment status to align it in the row */
+.payment-status-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the 'Paid' and 'Not Paid' statuses */
+.payment-status-paid {
+    color: green;
+    font-weight: bold;
+}
+
+.payment-status-unpaid {
+    color: red;
+    font-weight: bold;
+}
+
+/* Style for the buttons (e.g., Pay Now, Buy Now) */
+.pay-now-btn,
+.buy-now-btn {
+    padding: 8px 16px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pay-now-btn:hover,
+.buy-now-btn:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the promise title */
+.promise-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Ensure the modal content is centered */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.modal-content h3 {
+    margin-bottom: 10px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}

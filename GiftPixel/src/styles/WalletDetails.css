@@ -1,0 +1,110 @@
+.wallet-body{
+    background-color: #f2dfd8;
+    height: 100vh;
+}
+.wallet-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-container h1 {
+    text-align: center;
+}
+
+.wallet-details {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e0f7fa;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.wallet-container h2 {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.transactions-table th, .transactions-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.transactions-table th {
+    background-color: #00796b;
+    color: #fff;
+}
+
+.transactions-table tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.transactions-table tr:hover {
+    background-color: #e0f7fa;
+}
+
+.withdraw-button {
+    background-color: rgb(227, 80, 161); /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Spacing between button and transactions */
+    width: 100%; /* Make button take up full width on small screens */
+}
+
+.withdraw-button:hover {
+    background-color: rgb(172, 85, 167); /* Darker green on hover */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .wallet-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .wallet-details {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align left on smaller screens */
+        margin-bottom: 10px;
+    }
+
+    .withdraw-button {
+        padding: 12px 20px; /* Increase padding on small screens for better tap targets */
+        font-size: 18px;
+    }
+
+    .transactions-table th, .transactions-table td {
+        font-size: 14px; /* Adjust table font size */
+        padding: 8px; /* Reduce padding for small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .transactions-table th, .transactions-table td {
+        font-size: 12px; /* Further reduce font size on very small screens */
+        padding: 6px;
+    }
+
+    .wallet-details p {
+        font-size: 14px; /* Reduce font size in the wallet details */
+        margin-bottom: 10px;
+    }
+}

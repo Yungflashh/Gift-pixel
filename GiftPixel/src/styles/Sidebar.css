@@ -1,0 +1,86 @@
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    box-shadow: -2px 0px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for the glass effect */
+    padding: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px; /* Optional: Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border to enhance the glass effect */
+  }
+  
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    color: #fff; /* Ensure text is visible on a light background */
+  }
+  
+  .sidebar .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    align-self: flex-end;
+    color: #fff; /* Close button color */
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 15px;
+    color: #fff; /* Title color */
+  }
+  
+  .sidebar select, .sidebar input {
+    margin: 20px 0px 15px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3); /* Slightly transparent input fields */
+    color: black; /* Text color inside input fields */
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .sidebar select:focus, .sidebar input:focus {
+    background: rgba(255, 255, 255, 0.5); /* Focused state background */
+    outline: none;
+    border-color: #fff; /* Highlight border color on focus */
+  }
+  
+
+  .sub-button {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sub-button:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker shade on hover */
+  }
+  
+  .sub-button :disabled {
+    background-color: rgba(0, 0, 0, 0.3); /* Disabled button style */
+    cursor: not-allowed;
+  }
+  
+  /* Optional: add a backdrop overlay */
+  .sidebar::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3); /* Slight dark overlay */
+    z-index: -1;
+    display: block;
+  }
+  
